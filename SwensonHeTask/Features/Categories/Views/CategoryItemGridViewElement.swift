@@ -7,27 +7,45 @@
 
 import SwiftUI
 
+private struct ImageFrameModifier: ViewModifier {
+    private let imageHeight: CGFloat = 104
+
+    func body(content: Content) -> some View {
+        content
+            .frame(
+                minWidth: 0,
+                maxWidth: .infinity,
+                minHeight: 0,
+                maxHeight: imageHeight,
+                alignment: .center
+            )
+    }
+}
 struct CategoryItemGridViewElement: View {
     var body: some View {
-        ZStack(alignment: .topTrailing) {
-            VStack(alignment: .leading) {
-                AsyncImage(url: URL(string: "https://picsum.photos/200/300")) { phase in
-                    switch phase {
-                    case .empty:
-                        ProgressView()
-                            .frame(height: 104)
-                    case .success(let image):
-                        image.resizable()
-                            .scaledToFill()
-                            .frame(height: 104)
-                            .clipped()
-                    case .failure:
-                        Image("articlePlaceholder")
-                    @unknown default:
-                        EmptyView()
-                    }
+        VStack(alignment: .leading) {
+            AsyncImage(url: URL(string: "https://picsum.photos/200/300")) { phase in
+                switch phase {
+                case .empty:
+                    ProgressView()
+                        .modifier(ImageFrameModifier())
+                        .clipped()
+                case .success(let image):
+                    image.resizable()
+                        .scaledToFill()
+                        .modifier(ImageFrameModifier())
+                        .clipped()
+                case .failure:
+                    Spacer()
+                        .modifier(ImageFrameModifier())
+                        .clipped()
+                @unknown default:
+                    Spacer()
+                        .modifier(ImageFrameModifier())
                 }
-                VStack {
+            }
+            HStack {
+                VStack(alignment: .leading) {
                     Text("Staff")
                         .font(
                             Font.custom("Avenir", size: 14)
@@ -39,17 +57,13 @@ struct CategoryItemGridViewElement: View {
                 }
                 .padding(.horizontal, 5)
                 Spacer()
+                Button(action: {}, label: {
+                    Image(systemName: "chevron.forward")
+                        .foregroundColor(ColorsConstants.mainColor)
+                })
+                .padding(.horizontal, 5)
             }
-            Button(action: {}, label: {
-                Image(systemName: "plus")
-                    .foregroundColor(.white)
-            })
-            .frame(width: 24, height: 24)
-            .background(.black.opacity(0.5))
-            .clipShape(.circle)
-            .padding(.top, 12)
-            .padding(.trailing, 12)
-
+            Spacer()
         }
         .frame(width: 164, height: 149)
         .clipShape(.rect(
@@ -62,6 +76,17 @@ struct CategoryItemGridViewElement: View {
             RoundedRectangle(cornerRadius: 5)
                 .stroke(ColorsConstants.borderColor, lineWidth: 1)
         )
+        .overlay(alignment: .topTrailing, content: {
+            Button(action: {}, label: {
+                Image(systemName: "plus")
+                    .foregroundColor(.white)
+            })
+            .frame(width: 24, height: 24)
+            .background(.black.opacity(0.5))
+            .clipShape(.circle)
+            .padding(.top, 12)
+            .padding(.trailing, 12)
+        })
     }
 }
 

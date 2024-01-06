@@ -10,7 +10,7 @@ import SwiftUI
 struct EventBuilderNavigation: View {
     var body: some View {
         NavigationStack {
-            CategoriesItemsScreen()
+            CategoriesItemsScreen(vm: CategoriesScreenViewModel())
                 .navigationTitle("")
         }
         .tint(ColorsConstants.mainColor)

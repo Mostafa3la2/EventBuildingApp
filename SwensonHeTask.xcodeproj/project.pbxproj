@@ -20,6 +20,8 @@
 		0D3BD2C82B49C2680053B4A5 /* CategoryItemGridViewElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3BD2C72B49C2680053B4A5 /* CategoryItemGridViewElement.swift */; };
 		0D3BD2CB2B49C6950053B4A5 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3BD2CA2B49C6950053B4A5 /* Colors.swift */; };
 		0DEC8EFC2B49F48B0080DD7B /* EventBuilderNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DEC8EFB2B49F48B0080DD7B /* EventBuilderNavigation.swift */; };
+		0DEC8EFE2B4A16D80080DD7B /* CategoriesScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DEC8EFD2B4A16D80080DD7B /* CategoriesScreenViewModel.swift */; };
+		0DEC8F002B4A16E50080DD7B /* CategoryItemsScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DEC8EFF2B4A16E50080DD7B /* CategoryItemsScreenViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +58,8 @@
 		0D3BD2C72B49C2680053B4A5 /* CategoryItemGridViewElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryItemGridViewElement.swift; sourceTree = "<group>"; };
 		0D3BD2CA2B49C6950053B4A5 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		0DEC8EFB2B49F48B0080DD7B /* EventBuilderNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventBuilderNavigation.swift; sourceTree = "<group>"; };
+		0DEC8EFD2B4A16D80080DD7B /* CategoriesScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesScreenViewModel.swift; sourceTree = "<group>"; };
+		0DEC8EFF2B4A16E50080DD7B /* CategoryItemsScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryItemsScreenViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,6 +193,8 @@
 			isa = PBXGroup;
 			children = (
 				0D3BD2C52B49BF950053B4A5 /* AbstractCategories+ItemsViewModel.swift */,
+				0DEC8EFD2B4A16D80080DD7B /* CategoriesScreenViewModel.swift */,
+				0DEC8EFF2B4A16E50080DD7B /* CategoryItemsScreenViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -332,9 +338,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				0DEC8EFC2B49F48B0080DD7B /* EventBuilderNavigation.swift in Sources */,
+				0DEC8EFE2B4A16D80080DD7B /* CategoriesScreenViewModel.swift in Sources */,
 				0D3BD2C62B49BF950053B4A5 /* AbstractCategories+ItemsViewModel.swift in Sources */,
 				0D3BD2942B49BB800053B4A5 /* ContentView.swift in Sources */,
 				0D3BD2962B49BB800053B4A5 /* Item.swift in Sources */,
+				0DEC8F002B4A16E50080DD7B /* CategoryItemsScreenViewModel.swift in Sources */,
 				0D3BD2CB2B49C6950053B4A5 /* Colors.swift in Sources */,
 				0D3BD2C22B49BE150053B4A5 /* CategoriesItemsScreen.swift in Sources */,
 				0D3BD2C82B49C2680053B4A5 /* CategoryItemGridViewElement.swift in Sources */,

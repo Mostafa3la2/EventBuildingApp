@@ -11,22 +11,22 @@ enum PageState {
     case mainCategories
     case categoryItems
 }
-struct CategoriesItemsScreen: View {
+struct CategoriesItemsScreen<T>: View where T: CategoriesItemsModularViewModel {
 
-    // var vm: CategoriesItemsModularViewModel
-    let data = (1...10).map { $0 } // Sample data
+    @ObservedObject var vm: T
+    let data = (1...4).map { $0 } // Sample data
     var state: PageState = .mainCategories
     var body: some View {
         ScrollView {
             VStack {
-                Text("Test")
+                Text(vm.title)
                     .font(
                         Font.custom("Avenir", size: 18)
                             .weight(.black)
                     )
                     .multilineTextAlignment(.center)
                     .foregroundColor(.black)
-                Text("Add to your event to view our cost estimate.")
+                Text(vm.subtitle)
                     .font(
                         Font.custom("Avenir", size: 16)
                             .weight(.medium)
@@ -34,7 +34,7 @@ struct CategoriesItemsScreen: View {
                     .multilineTextAlignment(.center)
                     .frame(width: 310, height: 68, alignment: .top)
                     .foregroundColor(ColorsConstants.subtitleColor)
-                Text("-")
+                Text(vm.avgBudget)
                     .font(
                         Font.custom("Avenir", size: 37)
                             .weight(.black)
@@ -45,7 +45,7 @@ struct CategoriesItemsScreen: View {
                     ForEach(data, id: \.self) { item in
                         // Your grid cell content here
                         if state == .mainCategories {
-                            NavigationLink(destination: CategoriesItemsScreen(state: .categoryItems)){
+                            NavigationLink(destination: CategoriesItemsScreen<CategoryItemsViewModel>(vm: CategoryItemsViewModel(), state: .categoryItems)){
                                 CategoryItemGridViewElement()
                             }
                         } else {
@@ -53,7 +53,7 @@ struct CategoriesItemsScreen: View {
                         }
                     }
                 }
-                Button(action: {}, label: {
+                state == .mainCategories ? Button(action: {}, label: {
                     Text("Save")
                       .font(
                         Font.custom("Avenir", size: 16)
@@ -65,7 +65,7 @@ struct CategoriesItemsScreen: View {
                 .frame(width: 343, height: 52)
                 .background(ColorsConstants.mainColor)
                 .clipShape(.rect(cornerRadius: 5))
-                .padding()
+                .padding() : nil
             }
         }
         .background(ColorsConstants.backgroundColor)
@@ -83,7 +83,11 @@ struct CategoriesItemsScreen: View {
             }, label: {
                 Text("Toggle view state")
             })
-            CategoriesItemsScreen(state: state)
+            if state == .mainCategories {
+                CategoriesItemsScreen<CategoriesScreenDummyViewModel>(vm: CategoriesScreenDummyViewModel())
+            } else {
+                CategoriesItemsScreen<CategoryItemsDummyViewModel>(vm: CategoryItemsDummyViewModel(), state: .categoryItems)
+            }
         }
 
         func toggleState() {

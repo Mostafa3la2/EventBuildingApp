@@ -7,8 +7,14 @@
 
 import Foundation
 
-protocol CategoriesItemsModularViewModel {
+protocol CategoriesItemsModularViewModel: ObservableObject {
     var title: String {
+        get set
+    }
+    var subtitle: String {
+        get set
+    }
+    var avgBudget: String {
         get set
     }
 }

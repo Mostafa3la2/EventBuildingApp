@@ -22,6 +22,7 @@ private struct ImageFrameModifier: ViewModifier {
     }
 }
 struct CategoryItemGridViewElement: View {
+    var state: PageState = .mainCategories
     var body: some View {
         VStack(alignment: .leading) {
             AsyncImage(url: URL(string: "https://picsum.photos/200/300")) { phase in
@@ -52,16 +53,16 @@ struct CategoryItemGridViewElement: View {
                                 .weight(.medium)
                         )
                         .foregroundColor(ColorsConstants.gridItemTitleColor)
-                    Text("$350")
-                        .font(Font.custom("Avenir-Black", size: 14))
+                    state == .categoryItems ? Text("$350")
+                        .font(Font.custom("Avenir-Black", size: 14)) : nil
                 }
                 .padding(.horizontal, 5)
                 Spacer()
-                Button(action: {}, label: {
+                state == .mainCategories ? Button(action: {}, label: {
                     Image(systemName: "chevron.forward")
                         .foregroundColor(ColorsConstants.mainColor)
                 })
-                .padding(.horizontal, 5)
+                .padding(.horizontal, 5) : nil
             }
             Spacer()
         }
@@ -71,7 +72,9 @@ struct CategoryItemGridViewElement: View {
             RoundedRectangle(cornerRadius: 5)
                 .stroke(ColorsConstants.borderColor, lineWidth: 1)
         )
+
         .overlay(alignment: .topTrailing, content: {
+            state == .categoryItems ?
             Button(action: {}, label: {
                 Image(systemName: "plus")
                     .foregroundColor(.white)
@@ -80,7 +83,8 @@ struct CategoryItemGridViewElement: View {
             .background(.black.opacity(0.5))
             .clipShape(.circle)
             .padding(.top, 12)
-            .padding(.trailing, 12)
+            .padding(.trailing, 12) :
+            nil
         })
     }
 }

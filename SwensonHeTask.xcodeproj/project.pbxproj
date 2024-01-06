@@ -19,6 +19,7 @@
 		0D3BD2C62B49BF950053B4A5 /* AbstractCategories+ItemsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3BD2C52B49BF950053B4A5 /* AbstractCategories+ItemsViewModel.swift */; };
 		0D3BD2C82B49C2680053B4A5 /* CategoryItemGridViewElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3BD2C72B49C2680053B4A5 /* CategoryItemGridViewElement.swift */; };
 		0D3BD2CB2B49C6950053B4A5 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3BD2CA2B49C6950053B4A5 /* Colors.swift */; };
+		0DEC8EFC2B49F48B0080DD7B /* EventBuilderNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DEC8EFB2B49F48B0080DD7B /* EventBuilderNavigation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,7 @@
 		0D3BD2C52B49BF950053B4A5 /* AbstractCategories+ItemsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AbstractCategories+ItemsViewModel.swift"; sourceTree = "<group>"; };
 		0D3BD2C72B49C2680053B4A5 /* CategoryItemGridViewElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryItemGridViewElement.swift; sourceTree = "<group>"; };
 		0D3BD2CA2B49C6950053B4A5 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		0DEC8EFB2B49F48B0080DD7B /* EventBuilderNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventBuilderNavigation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,6 +180,7 @@
 			children = (
 				0D3BD2C12B49BE150053B4A5 /* CategoriesItemsScreen.swift */,
 				0D3BD2C72B49C2680053B4A5 /* CategoryItemGridViewElement.swift */,
+				0DEC8EFB2B49F48B0080DD7B /* EventBuilderNavigation.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -328,6 +331,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0DEC8EFC2B49F48B0080DD7B /* EventBuilderNavigation.swift in Sources */,
 				0D3BD2C62B49BF950053B4A5 /* AbstractCategories+ItemsViewModel.swift in Sources */,
 				0D3BD2942B49BB800053B4A5 /* ContentView.swift in Sources */,
 				0D3BD2962B49BB800053B4A5 /* Item.swift in Sources */,

@@ -15,7 +15,7 @@ struct CategoriesItemsScreen: View {
 
     // var vm: CategoriesItemsModularViewModel
     let data = (1...10).map { $0 } // Sample data
-
+    var state: PageState = .mainCategories
     var body: some View {
         ScrollView {
             VStack {
@@ -44,7 +44,13 @@ struct CategoriesItemsScreen: View {
                 LazyVGrid(columns: [GridItem(), GridItem()]) {
                     ForEach(data, id: \.self) { item in
                         // Your grid cell content here
-                        CategoryItemGridViewElement()
+                        if state == .mainCategories {
+                            NavigationLink(destination: CategoriesItemsScreen(state: .categoryItems)){
+                                CategoryItemGridViewElement()
+                            }
+                        } else {
+                            CategoryItemGridViewElement(state: .categoryItems)
+                        }
                     }
                 }
                 Button(action: {}, label: {

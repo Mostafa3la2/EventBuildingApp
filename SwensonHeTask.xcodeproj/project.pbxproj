@@ -15,6 +15,10 @@
 		0D3BD2A52B49BB820053B4A5 /* SwensonHeTaskTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3BD2A42B49BB820053B4A5 /* SwensonHeTaskTests.swift */; };
 		0D3BD2AF2B49BB820053B4A5 /* SwensonHeTaskUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3BD2AE2B49BB820053B4A5 /* SwensonHeTaskUITests.swift */; };
 		0D3BD2B12B49BB820053B4A5 /* SwensonHeTaskUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3BD2B02B49BB820053B4A5 /* SwensonHeTaskUITestsLaunchTests.swift */; };
+		0D3BD2C22B49BE150053B4A5 /* CategoriesItemsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3BD2C12B49BE150053B4A5 /* CategoriesItemsScreen.swift */; };
+		0D3BD2C62B49BF950053B4A5 /* AbstractCategories+ItemsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3BD2C52B49BF950053B4A5 /* AbstractCategories+ItemsViewModel.swift */; };
+		0D3BD2C82B49C2680053B4A5 /* CategoryItemGridViewElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3BD2C72B49C2680053B4A5 /* CategoryItemGridViewElement.swift */; };
+		0D3BD2CB2B49C6950053B4A5 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3BD2CA2B49C6950053B4A5 /* Colors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +50,10 @@
 		0D3BD2AA2B49BB820053B4A5 /* SwensonHeTaskUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwensonHeTaskUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D3BD2AE2B49BB820053B4A5 /* SwensonHeTaskUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwensonHeTaskUITests.swift; sourceTree = "<group>"; };
 		0D3BD2B02B49BB820053B4A5 /* SwensonHeTaskUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwensonHeTaskUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		0D3BD2C12B49BE150053B4A5 /* CategoriesItemsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesItemsScreen.swift; sourceTree = "<group>"; };
+		0D3BD2C52B49BF950053B4A5 /* AbstractCategories+ItemsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AbstractCategories+ItemsViewModel.swift"; sourceTree = "<group>"; };
+		0D3BD2C72B49C2680053B4A5 /* CategoryItemGridViewElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryItemGridViewElement.swift; sourceTree = "<group>"; };
+		0D3BD2CA2B49C6950053B4A5 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +104,9 @@
 		0D3BD2902B49BB800053B4A5 /* SwensonHeTask */ = {
 			isa = PBXGroup;
 			children = (
+				0D3BD2BE2B49BC700053B4A5 /* Utilities */,
+				0D3BD2BD2B49BC6B0053B4A5 /* Services */,
+				0D3BD2BF2B49BC770053B4A5 /* Features */,
 				0D3BD2912B49BB800053B4A5 /* SwensonHeTaskApp.swift */,
 				0D3BD2932B49BB800053B4A5 /* ContentView.swift */,
 				0D3BD2952B49BB800053B4A5 /* Item.swift */,
@@ -128,6 +139,63 @@
 				0D3BD2B02B49BB820053B4A5 /* SwensonHeTaskUITestsLaunchTests.swift */,
 			);
 			path = SwensonHeTaskUITests;
+			sourceTree = "<group>";
+		};
+		0D3BD2BD2B49BC6B0053B4A5 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		0D3BD2BE2B49BC700053B4A5 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				0D3BD2C92B49C6880053B4A5 /* Design System */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		0D3BD2BF2B49BC770053B4A5 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				0D3BD2C02B49BDB40053B4A5 /* Categories */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		0D3BD2C02B49BDB40053B4A5 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				0D3BD2C42B49BF7D0053B4A5 /* ViewModels */,
+				0D3BD2C32B49BF740053B4A5 /* Views */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		0D3BD2C32B49BF740053B4A5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0D3BD2C12B49BE150053B4A5 /* CategoriesItemsScreen.swift */,
+				0D3BD2C72B49C2680053B4A5 /* CategoryItemGridViewElement.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		0D3BD2C42B49BF7D0053B4A5 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				0D3BD2C52B49BF950053B4A5 /* AbstractCategories+ItemsViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		0D3BD2C92B49C6880053B4A5 /* Design System */ = {
+			isa = PBXGroup;
+			children = (
+				0D3BD2CA2B49C6950053B4A5 /* Colors.swift */,
+			);
+			path = "Design System";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -260,8 +328,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D3BD2C62B49BF950053B4A5 /* AbstractCategories+ItemsViewModel.swift in Sources */,
 				0D3BD2942B49BB800053B4A5 /* ContentView.swift in Sources */,
 				0D3BD2962B49BB800053B4A5 /* Item.swift in Sources */,
+				0D3BD2CB2B49C6950053B4A5 /* Colors.swift in Sources */,
+				0D3BD2C22B49BE150053B4A5 /* CategoriesItemsScreen.swift in Sources */,
+				0D3BD2C82B49C2680053B4A5 /* CategoryItemGridViewElement.swift in Sources */,
 				0D3BD2922B49BB800053B4A5 /* SwensonHeTaskApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

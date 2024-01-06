@@ -51,7 +51,7 @@ struct CategoryItemGridViewElement: View {
                             Font.custom("Avenir", size: 14)
                                 .weight(.medium)
                         )
-                        .foregroundColor(ColorsConstants.textColor)
+                        .foregroundColor(ColorsConstants.gridItemTitleColor)
                     Text("$350")
                         .font(Font.custom("Avenir-Black", size: 14))
                 }
@@ -66,12 +66,7 @@ struct CategoryItemGridViewElement: View {
             Spacer()
         }
         .frame(width: 164, height: 149)
-        .clipShape(.rect(
-            topLeadingRadius: 5,
-            bottomLeadingRadius: 5,
-            bottomTrailingRadius: 5,
-            topTrailingRadius: 5
-        ))
+        .clipShape(.rect(cornerRadius: 5))
         .overlay(
             RoundedRectangle(cornerRadius: 5)
                 .stroke(ColorsConstants.borderColor, lineWidth: 1)

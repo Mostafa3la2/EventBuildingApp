@@ -14,31 +14,55 @@ enum PageState {
 struct CategoriesItemsScreen: View {
 
     // var vm: CategoriesItemsModularViewModel
+    let data = (1...10).map { $0 } // Sample data
+
     var body: some View {
-        VStack {
-            Text("Test")
-              .font(
-                Font.custom("Avenir", size: 18)
-                  .weight(.black)
-              )
-              .multilineTextAlignment(.center)
-              .foregroundColor(.black)
-            Text("Add to your event to view our cost estimate.")
-              .font(
-                Font.custom("Avenir", size: 16)
-                  .weight(.medium)
-              )
-              .multilineTextAlignment(.center)
-              .foregroundColor(Color(red: 0.45, green: 0.45, blue: 0.45))
-              .frame(width: 310, height: 68, alignment: .top)
-            Text("-")
-              .font(
-                Font.custom("Avenir", size: 37)
-                  .weight(.black)
-              )
-              .multilineTextAlignment(.center)
-              .foregroundColor(.black)
+        ScrollView {
+            VStack {
+                Text("Test")
+                    .font(
+                        Font.custom("Avenir", size: 18)
+                            .weight(.black)
+                    )
+                    .multilineTextAlignment(.center)
+                    .foregroundColor(.black)
+                Text("Add to your event to view our cost estimate.")
+                    .font(
+                        Font.custom("Avenir", size: 16)
+                            .weight(.medium)
+                    )
+                    .multilineTextAlignment(.center)
+                    .frame(width: 310, height: 68, alignment: .top)
+                    .foregroundColor(ColorsConstants.subtitleColor)
+                Text("-")
+                    .font(
+                        Font.custom("Avenir", size: 37)
+                            .weight(.black)
+                    )
+                    .multilineTextAlignment(.center)
+                    .foregroundColor(.black)
+                LazyVGrid(columns: [GridItem(), GridItem()]) {
+                    ForEach(data, id: \.self) { item in
+                        // Your grid cell content here
+                        CategoryItemGridViewElement()
+                    }
+                }
+                Button(action: {}, label: {
+                    Text("Save")
+                      .font(
+                        Font.custom("Avenir", size: 16)
+                          .weight(.black)
+                      )
+                      .multilineTextAlignment(.center)
+                      .foregroundColor(.white)
+                })
+                .frame(width: 343, height: 52)
+                .background(ColorsConstants.mainColor)
+                .clipShape(.rect(cornerRadius: 5))
+                .padding()
+            }
         }
+        .background(ColorsConstants.backgroundColor)
     }
 }
 

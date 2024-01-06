@@ -23,6 +23,8 @@ private struct ImageFrameModifier: ViewModifier {
 }
 struct CategoryItemGridViewElement: View {
     var state: PageState = .mainCategories
+    private static let cellWidth: CGFloat = 164
+    private static let cellHeight: CGFloat = 149
     var body: some View {
         VStack(alignment: .leading) {
             AsyncImage(url: URL(string: "https://picsum.photos/200/300")) { phase in
@@ -66,7 +68,7 @@ struct CategoryItemGridViewElement: View {
             }
             Spacer()
         }
-        .frame(width: 164, height: 149)
+        .frame(width: CategoryItemGridViewElement.cellWidth, height: CategoryItemGridViewElement.cellHeight)
         .clipShape(.rect(cornerRadius: 5))
         .overlay(
             RoundedRectangle(cornerRadius: 5)
@@ -90,5 +92,8 @@ struct CategoryItemGridViewElement: View {
 }
 
 #Preview {
-    CategoryItemGridViewElement()
+    VStack {
+        CategoryItemGridViewElement(state: .mainCategories)
+        CategoryItemGridViewElement(state: .categoryItems)
+    }
 }

@@ -73,5 +73,26 @@ struct CategoriesItemsScreen: View {
 }
 
 #Preview {
-    CategoriesItemsScreen()
+
+    struct ContainerView: View {
+        @State var state: PageState = .mainCategories
+
+        var body: some View {
+            Button(action: {
+                toggleState()
+            }, label: {
+                Text("Toggle view state")
+            })
+            CategoriesItemsScreen(state: state)
+        }
+
+        func toggleState() {
+            if state == .mainCategories {
+                state = .categoryItems
+            } else {
+                state = .mainCategories
+            }
+        }
+    }
+    return ContainerView()
 }

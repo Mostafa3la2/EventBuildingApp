@@ -29,7 +29,7 @@ struct CategoryItemGridViewElement<T>: View where T: ModularGridItemViewModel {
     private let cellHeight: CGFloat = 149
 
     private func createBudgetLabel(vm: HasBudget?) -> some View {
-        return Text("$ " + (vm?.avgBudget ?? "XX"))
+        return Text("$ " + ("\(vm?.avgBudget ?? 0)" ))
             .font(Font.custom("Avenir-Black", size: 14))
     }
     private func toggleAddButton(state:  Binding<Bool>) {
@@ -90,7 +90,11 @@ struct CategoryItemGridViewElement<T>: View where T: ModularGridItemViewModel {
                 // should handle the addition or subtraction here
                 // check first if can be added
                 added.toggle()
-                vm.cartManager.addItemToCart()
+                if added {
+                    (vm as? CartHandler)?.addToCart()
+                } else {
+                    (vm as? CartHandler)?.removeFromCart()
+                }
 
             }, label: {
                 !added ? Image(systemName: "plus")
@@ -110,8 +114,10 @@ struct CategoryItemGridViewElement<T>: View where T: ModularGridItemViewModel {
 
 #Preview {
     var cartManager = CartManager()
+    var category = CategoriesModelElement(id: 1, title: "test", image: "https://picsum.photos/200/300")
+
     return VStack {
-        CategoryItemGridViewElement<CategoryGridItemViewModel>(vm: CategoryGridItemViewModel(cartManager: cartManager), state: .categories)
+        CategoryItemGridViewElement<CategoryGridItemViewModel>(vm: CategoryGridItemViewModel(cartManager: cartManager, category: category), state: .categories)
         CategoryItemGridViewElement<TaskGridItemViewModel>(vm: TaskGridItemViewModel(cartManager: cartManager), state: .tasks)
     }
 }

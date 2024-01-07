@@ -10,19 +10,33 @@ import Combine
 
 class CategoriesScreenViewModel: CategoriesItemsModularViewModel {
 
-    var cartManager: CartManager
+    @Published var cartManager: CartManager
+    private var cancellables: Set<AnyCancellable> = []
 
-    var dataSource: [any ModularGridItemViewModel]
+    @Published var dataSource: [any ModularGridItemViewModel] = []
 
-    @Published var title: String = "Event Builder"
+    var title: String = "Event Builder"
 
-    @Published var subtitle: String = "Subtitle"
+    var subtitle: String = "Add to your event to view our cost estimate."
 
-    @Published var avgBudget: String = "$ XXXX"
+    @Published var avgBudget: Double = 0
 
     init(cartManager: CartManager) {
         self.cartManager = cartManager
-        dataSource = [CategoryGridItemViewModel(cartManager: cartManager)]
+        cartManager.$avgBudget
+                    .assign(to: \.avgBudget, on: self)
+                    .store(in: &cancellables)
+        self.getCategories()
+    }
+    func getCategories() {
+        Task {
+            do {
+                let categories = await CategoriesServices.sharedIntance.getCategories()
+                DispatchQueue.main.async {
+                    categories?.forEach{self.dataSource.append(CategoryGridItemViewModel(cartManager: self.cartManager, category: $0))}
+                }
+            }
+        }
     }
 }
 
@@ -36,10 +50,11 @@ class CategoriesScreenDummyViewModel: CategoriesItemsModularViewModel {
 
     @Published var subtitle: String = "Subtitle"
 
-    @Published var avgBudget: String = "$ XXXX"
+    @Published var avgBudget: Double = 0
 
     init(cartManager: CartManager) {
         self.cartManager = cartManager
-        dataSource = Array(repeating: CategoryGridItemViewModel(cartManager: cartManager), count: 4)
+        let category = CategoriesModelElement(id: 1, title: "test", image: "https://picsum.photos/200/300")
+        dataSource = Array(repeating: CategoryGridItemViewModel(cartManager: cartManager, category: category), count: 4)
     }
 }

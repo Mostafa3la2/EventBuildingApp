@@ -18,7 +18,7 @@ class TasksViewModel: CategoriesItemsModularViewModel {
 
     @Published var subtitle: String = "Subtitle"
 
-    @Published var avgBudget: String = "$ XXXX"
+    @Published var avgBudget: Double = 0
 
     init(cartManager: CartManager) {
         self.cartManager = cartManager
@@ -36,7 +36,7 @@ class TasksDummyViewModel: CategoriesItemsModularViewModel {
 
     @Published var subtitle: String = "Subtitle"
 
-    @Published var avgBudget: String = "$ XXXX"
+    @Published var avgBudget: Double = 0
 
     init(cartManager: CartManager) {
         self.cartManager = cartManager

@@ -42,7 +42,7 @@ struct CategoriesItemsScreen<T>: View where T: CategoriesItemsModularViewModel {
                     .multilineTextAlignment(.center)
                     .frame(width: 310, height: 68, alignment: .top)
                     .foregroundColor(ColorsConstants.subtitleColor)
-                Text(vm.avgBudget)
+                Text("$ \(vm.avgBudget)")
                     .font(
                         Font.custom("Avenir", size: 37)
                             .weight(.black)

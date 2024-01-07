@@ -26,6 +26,10 @@
 		0DEC8F052B4A1DBA0080DD7B /* AbstractGridItemViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DEC8F042B4A1DBA0080DD7B /* AbstractGridItemViewModels.swift */; };
 		0DEC8F072B4A1FA90080DD7B /* TaskGridViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DEC8F062B4A1FA90080DD7B /* TaskGridViewModel.swift */; };
 		0DEC8F0C2B4ABA7F0080DD7B /* CartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DEC8F0B2B4ABA7F0080DD7B /* CartViewModel.swift */; };
+		0DEC8F0E2B4ACEB70080DD7B /* CategoriesServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DEC8F0D2B4ACEB70080DD7B /* CategoriesServices.swift */; };
+		0DEC8F122B4AD36B0080DD7B /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DEC8F112B4AD36B0080DD7B /* NetworkManager.swift */; };
+		0DEC8F142B4AD3790080DD7B /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DEC8F132B4AD3790080DD7B /* NetworkError.swift */; };
+		0DEC8F172B4AD3E30080DD7B /* CategoriesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DEC8F162B4AD3E30080DD7B /* CategoriesModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +72,10 @@
 		0DEC8F042B4A1DBA0080DD7B /* AbstractGridItemViewModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractGridItemViewModels.swift; sourceTree = "<group>"; };
 		0DEC8F062B4A1FA90080DD7B /* TaskGridViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskGridViewModel.swift; sourceTree = "<group>"; };
 		0DEC8F0B2B4ABA7F0080DD7B /* CartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewModel.swift; sourceTree = "<group>"; };
+		0DEC8F0D2B4ACEB70080DD7B /* CategoriesServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesServices.swift; sourceTree = "<group>"; };
+		0DEC8F112B4AD36B0080DD7B /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		0DEC8F132B4AD3790080DD7B /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		0DEC8F162B4AD3E30080DD7B /* CategoriesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +126,7 @@
 		0D3BD2902B49BB800053B4A5 /* SwensonHeTask */ = {
 			isa = PBXGroup;
 			children = (
+				0DEC8F102B4AD35C0080DD7B /* Network */,
 				0D3BD2BE2B49BC700053B4A5 /* Utilities */,
 				0D3BD2BD2B49BC6B0053B4A5 /* Services */,
 				0D3BD2BF2B49BC770053B4A5 /* Features */,
@@ -158,6 +167,7 @@
 		0D3BD2BD2B49BC6B0053B4A5 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				0DEC8F0D2B4ACEB70080DD7B /* CategoriesServices.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -181,6 +191,7 @@
 		0D3BD2C02B49BDB40053B4A5 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				0DEC8F152B4AD3D80080DD7B /* Models */,
 				0D3BD2C42B49BF7D0053B4A5 /* ViewModels */,
 				0D3BD2C32B49BF740053B4A5 /* Views */,
 			);
@@ -225,6 +236,23 @@
 				0DEC8F042B4A1DBA0080DD7B /* AbstractGridItemViewModels.swift */,
 			);
 			path = Abstracts;
+			sourceTree = "<group>";
+		};
+		0DEC8F102B4AD35C0080DD7B /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				0DEC8F112B4AD36B0080DD7B /* NetworkManager.swift */,
+				0DEC8F132B4AD3790080DD7B /* NetworkError.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		0DEC8F152B4AD3D80080DD7B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0DEC8F162B4AD3E30080DD7B /* CategoriesModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -357,9 +385,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0DEC8F142B4AD3790080DD7B /* NetworkError.swift in Sources */,
+				0DEC8F0E2B4ACEB70080DD7B /* CategoriesServices.swift in Sources */,
 				0DEC8F022B4A1BF60080DD7B /* CategoryGridItemViewModel.swift in Sources */,
+				0DEC8F172B4AD3E30080DD7B /* CategoriesModel.swift in Sources */,
 				0DEC8EFC2B49F48B0080DD7B /* EventBuilderNavigation.swift in Sources */,
 				0DEC8F0C2B4ABA7F0080DD7B /* CartViewModel.swift in Sources */,
+				0DEC8F122B4AD36B0080DD7B /* NetworkManager.swift in Sources */,
 				0DEC8EFE2B4A16D80080DD7B /* CategoriesScreenViewModel.swift in Sources */,
 				0D3BD2C62B49BF950053B4A5 /* AbstractCategories+ItemsViewModel.swift in Sources */,
 				0D3BD2942B49BB800053B4A5 /* ContentView.swift in Sources */,

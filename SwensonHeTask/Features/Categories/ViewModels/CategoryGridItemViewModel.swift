@@ -14,7 +14,10 @@ class CategoryGridItemViewModel: ModularGridItemViewModel, ObservableObject {
     var title: String = "Category"
 
     var imageURL: String = "https://picsum.photos/200/300"
-    init(cartManager: CartManager) {
+
+    init(cartManager: CartManager, category: CategoriesModelElement) {
         self.cartManager = cartManager
+        self.title = category.title ?? ""
+        self.imageURL = category.image ?? ""
     }
 }

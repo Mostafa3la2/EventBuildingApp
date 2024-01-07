@@ -16,8 +16,12 @@ protocol ModularGridItemViewModel: ObservableObject {
 }
 
 protocol HasBudget {
-    var avgBudget: String { get }
-    var minBudget: String { get }
-    var maxBudget: String { get }
+    var avgBudget: Double { get }
+    var minBudget: Double { get }
+    var maxBudget: Double { get }
 }
 
+protocol CartHandler {
+    func addToCart()
+    func removeFromCart()
+}

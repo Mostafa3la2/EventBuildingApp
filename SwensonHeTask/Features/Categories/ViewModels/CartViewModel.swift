@@ -10,15 +10,24 @@ import Combine
 
 class CartManager: ObservableObject {
     @Published var cartItems: [CartItem] = []
-    
-    func addItemToCart() {
+    @Published var avgBudget: Double = 0
+    func addItemToCart(cartItem: CartItem) {
+        if !cartItems.contains(cartItem) {
+            self.cartItems.append(cartItem)
+            self.avgBudget+=cartItem.avgBudget ?? 0
 
+        }
+    }
+    func removeItemFrom(cartItem: CartItem) {
+        if cartItems.contains(cartItem) {
+            self.cartItems.removeAll{$0 == cartItem}
+            self.avgBudget-=cartItem.avgBudget ?? 0
+        }
     }
 }
 
-struct CartItem: Identifiable {
-    let id: UUID
-    let name: String
-    var quantity: Int
-    // Add more properties as needed
+struct CartItem: Equatable{
+
+    var name: String?
+    var avgBudget: Double?
 }

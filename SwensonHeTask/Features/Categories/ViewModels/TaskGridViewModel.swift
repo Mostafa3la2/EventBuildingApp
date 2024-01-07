@@ -8,17 +8,26 @@
 import Foundation
 
 
-class TaskGridItemViewModel: ModularGridItemViewModel, HasBudget, ObservableObject {
+class TaskGridItemViewModel: ModularGridItemViewModel, HasBudget, ObservableObject, CartHandler {
+    
+    func addToCart() {
+        self.cartManager.addItemToCart(cartItem: CartItem(name: self.title, avgBudget: self.avgBudget))
+    }
+
+    func removeFromCart() {
+        self.cartManager.removeItemFrom(cartItem: CartItem(name: self.title, avgBudget: self.avgBudget))
+    }
+
 
     var cartManager: CartManager
 
     @Published var added: Bool = false
 
-    var avgBudget: String = "600"
+    var avgBudget: Double = 600
 
-    var minBudget: String = "300"
+    var minBudget: Double = 300
 
-    var maxBudget: String = "900"
+    var maxBudget: Double = 900
 
     var title: String = "Task"
 

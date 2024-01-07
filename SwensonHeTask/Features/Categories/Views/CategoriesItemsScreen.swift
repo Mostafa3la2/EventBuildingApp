@@ -8,14 +8,24 @@
 import SwiftUI
 
 enum PageState {
-    case mainCategories
-    case categoryItems
+    case categories
+    case tasks
 }
+// this one may be confusing but using generics here allows us to use the screen differently by passing different VMs that conform to same protocol which provides similar data 
 struct CategoriesItemsScreen<T>: View where T: CategoriesItemsModularViewModel {
 
     @ObservedObject var vm: T
-    let data = (1...4).map { $0 } // Sample data
-    var state: PageState = .mainCategories
+    let data = (0...3).map { $0 } // Sample data
+    var state: PageState = .categories
+
+    private func constructCategoriesGridCell(index: Int) -> some View {
+        return NavigationLink(destination: CategoriesItemsScreen<TasksViewModel>(vm: TasksViewModel(), state: .tasks)){
+            CategoryItemGridViewElement<CategoryGridItemViewModel>(vm: vm.dataSource[index] as! CategoryGridItemViewModel)
+        }
+    }
+    private func constructTasksGridCell(index: Int) -> some View {
+        return CategoryItemGridViewElement<TaskGridItemViewModel>(vm: vm.dataSource[index] as! TaskGridItemViewModel, state: .tasks)
+    }
     var body: some View {
         ScrollView {
             VStack {
@@ -44,16 +54,14 @@ struct CategoriesItemsScreen<T>: View where T: CategoriesItemsModularViewModel {
                 LazyVGrid(columns: [GridItem(), GridItem()]) {
                     ForEach(data, id: \.self) { item in
                         // Your grid cell content here
-                        if state == .mainCategories {
-                            NavigationLink(destination: CategoriesItemsScreen<CategoryItemsViewModel>(vm: CategoryItemsViewModel(), state: .categoryItems)){
-                                CategoryItemGridViewElement()
-                            }
+                        if state == .categories {
+                            constructCategoriesGridCell(index: item)
                         } else {
-                            CategoryItemGridViewElement(state: .categoryItems)
+                            constructTasksGridCell(index: item)
                         }
                     }
                 }
-                state == .mainCategories ? Button(action: {}, label: {
+                state == .categories ? Button(action: {}, label: {
                     Text("Save")
                       .font(
                         Font.custom("Avenir", size: 16)
@@ -75,7 +83,7 @@ struct CategoriesItemsScreen<T>: View where T: CategoriesItemsModularViewModel {
 #Preview {
 
     struct ContainerView: View {
-        @State var state: PageState = .mainCategories
+        @State var state: PageState = .categories
 
         var body: some View {
             Button(action: {
@@ -83,18 +91,18 @@ struct CategoriesItemsScreen<T>: View where T: CategoriesItemsModularViewModel {
             }, label: {
                 Text("Toggle view state")
             })
-            if state == .mainCategories {
+            if state == .categories {
                 CategoriesItemsScreen<CategoriesScreenDummyViewModel>(vm: CategoriesScreenDummyViewModel())
             } else {
-                CategoriesItemsScreen<CategoryItemsDummyViewModel>(vm: CategoryItemsDummyViewModel(), state: .categoryItems)
+                CategoriesItemsScreen<TasksDummyViewModel>(vm: TasksDummyViewModel(), state: .tasks)
             }
         }
 
         func toggleState() {
-            if state == .mainCategories {
-                state = .categoryItems
+            if state == .categories {
+                state = .tasks
             } else {
-                state = .mainCategories
+                state = .categories
             }
         }
     }

@@ -22,6 +22,9 @@
 		0DEC8EFC2B49F48B0080DD7B /* EventBuilderNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DEC8EFB2B49F48B0080DD7B /* EventBuilderNavigation.swift */; };
 		0DEC8EFE2B4A16D80080DD7B /* CategoriesScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DEC8EFD2B4A16D80080DD7B /* CategoriesScreenViewModel.swift */; };
 		0DEC8F002B4A16E50080DD7B /* CategoryItemsScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DEC8EFF2B4A16E50080DD7B /* CategoryItemsScreenViewModel.swift */; };
+		0DEC8F022B4A1BF60080DD7B /* CategoryGridItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DEC8F012B4A1BF60080DD7B /* CategoryGridItemViewModel.swift */; };
+		0DEC8F052B4A1DBA0080DD7B /* AbstractGridItemViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DEC8F042B4A1DBA0080DD7B /* AbstractGridItemViewModels.swift */; };
+		0DEC8F072B4A1FA90080DD7B /* TaskGridViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DEC8F062B4A1FA90080DD7B /* TaskGridViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +63,9 @@
 		0DEC8EFB2B49F48B0080DD7B /* EventBuilderNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventBuilderNavigation.swift; sourceTree = "<group>"; };
 		0DEC8EFD2B4A16D80080DD7B /* CategoriesScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesScreenViewModel.swift; sourceTree = "<group>"; };
 		0DEC8EFF2B4A16E50080DD7B /* CategoryItemsScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryItemsScreenViewModel.swift; sourceTree = "<group>"; };
+		0DEC8F012B4A1BF60080DD7B /* CategoryGridItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryGridItemViewModel.swift; sourceTree = "<group>"; };
+		0DEC8F042B4A1DBA0080DD7B /* AbstractGridItemViewModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractGridItemViewModels.swift; sourceTree = "<group>"; };
+		0DEC8F062B4A1FA90080DD7B /* TaskGridViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskGridViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,9 +198,11 @@
 		0D3BD2C42B49BF7D0053B4A5 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				0D3BD2C52B49BF950053B4A5 /* AbstractCategories+ItemsViewModel.swift */,
+				0DEC8F032B4A1D9C0080DD7B /* Abstracts */,
 				0DEC8EFD2B4A16D80080DD7B /* CategoriesScreenViewModel.swift */,
 				0DEC8EFF2B4A16E50080DD7B /* CategoryItemsScreenViewModel.swift */,
+				0DEC8F012B4A1BF60080DD7B /* CategoryGridItemViewModel.swift */,
+				0DEC8F062B4A1FA90080DD7B /* TaskGridViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -205,6 +213,15 @@
 				0D3BD2CA2B49C6950053B4A5 /* Colors.swift */,
 			);
 			path = "Design System";
+			sourceTree = "<group>";
+		};
+		0DEC8F032B4A1D9C0080DD7B /* Abstracts */ = {
+			isa = PBXGroup;
+			children = (
+				0D3BD2C52B49BF950053B4A5 /* AbstractCategories+ItemsViewModel.swift */,
+				0DEC8F042B4A1DBA0080DD7B /* AbstractGridItemViewModels.swift */,
+			);
+			path = Abstracts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -337,15 +354,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0DEC8F022B4A1BF60080DD7B /* CategoryGridItemViewModel.swift in Sources */,
 				0DEC8EFC2B49F48B0080DD7B /* EventBuilderNavigation.swift in Sources */,
 				0DEC8EFE2B4A16D80080DD7B /* CategoriesScreenViewModel.swift in Sources */,
 				0D3BD2C62B49BF950053B4A5 /* AbstractCategories+ItemsViewModel.swift in Sources */,
 				0D3BD2942B49BB800053B4A5 /* ContentView.swift in Sources */,
 				0D3BD2962B49BB800053B4A5 /* Item.swift in Sources */,
+				0DEC8F052B4A1DBA0080DD7B /* AbstractGridItemViewModels.swift in Sources */,
 				0DEC8F002B4A16E50080DD7B /* CategoryItemsScreenViewModel.swift in Sources */,
 				0D3BD2CB2B49C6950053B4A5 /* Colors.swift in Sources */,
 				0D3BD2C22B49BE150053B4A5 /* CategoriesItemsScreen.swift in Sources */,
 				0D3BD2C82B49C2680053B4A5 /* CategoryItemGridViewElement.swift in Sources */,
+				0DEC8F072B4A1FA90080DD7B /* TaskGridViewModel.swift in Sources */,
 				0D3BD2922B49BB800053B4A5 /* SwensonHeTaskApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

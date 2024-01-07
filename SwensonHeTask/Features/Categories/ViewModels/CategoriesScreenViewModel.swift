@@ -8,7 +8,10 @@
 import Foundation
 
 class CategoriesScreenViewModel: CategoriesItemsModularViewModel {
-    
+
+
+    var dataSource: [any ModularGridItemViewModel] = [CategoryGridItemViewModel()]
+
     @Published var title: String = "Event Builder"
 
     @Published var subtitle: String = "Subtitle"
@@ -20,7 +23,9 @@ class CategoriesScreenViewModel: CategoriesItemsModularViewModel {
 
 class CategoriesScreenDummyViewModel: CategoriesItemsModularViewModel {
 
-    @Published var title: String = "Event Builder"
+    var dataSource: [any ModularGridItemViewModel] = [CategoryGridItemViewModel(title: "Dummy Category"), CategoryGridItemViewModel(title: "Dummy Category"), CategoryGridItemViewModel(title: "Dummy Category"), CategoryGridItemViewModel(title: "Dummy Category")]
+
+    @Published var title: String = "Dummy Event Builder"
 
     @Published var subtitle: String = "Subtitle"
 

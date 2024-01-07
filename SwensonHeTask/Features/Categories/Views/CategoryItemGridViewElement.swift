@@ -21,13 +21,19 @@ private struct ImageFrameModifier: ViewModifier {
             )
     }
 }
-struct CategoryItemGridViewElement: View {
-    var state: PageState = .mainCategories
-    private static let cellWidth: CGFloat = 164
-    private static let cellHeight: CGFloat = 149
+struct CategoryItemGridViewElement<T>: View where T: ModularGridItemViewModel {
+    var vm: T
+    var state: PageState = .categories
+    private let cellWidth: CGFloat = 164
+    private let cellHeight: CGFloat = 149
+
+    func createBudgetLabel(vm: HasBudget?) -> some View {
+        return Text(vm?.avgBudget ?? "XX")
+            .font(Font.custom("Avenir-Black", size: 14))
+    }
     var body: some View {
         VStack(alignment: .leading) {
-            AsyncImage(url: URL(string: "https://picsum.photos/200/300")) { phase in
+            AsyncImage(url: URL(string: vm.imageURL)) { phase in
                 switch phase {
                 case .empty:
                     ProgressView()
@@ -49,26 +55,25 @@ struct CategoryItemGridViewElement: View {
             }
             HStack {
                 VStack(alignment: .leading) {
-                    Text("Staff")
+                    Text(vm.title)
                         .font(
                             Font.custom("Avenir", size: 14)
                                 .weight(.medium)
                         )
                         .foregroundColor(ColorsConstants.gridItemTitleColor)
-                    state == .categoryItems ? Text("$350")
-                        .font(Font.custom("Avenir-Black", size: 14)) : nil
+                    // using optional here just in case even though tasks state mean that the vm HasBudget
+                    state == .tasks ? createBudgetLabel(vm: vm as? HasBudget) : nil
                 }
                 .padding(.horizontal, 5)
                 Spacer()
-                state == .mainCategories ? Button(action: {}, label: {
+                state == .categories ?
                     Image(systemName: "chevron.forward")
                         .foregroundColor(ColorsConstants.mainColor)
-                })
                 .padding(.horizontal, 5) : nil
             }
             Spacer()
         }
-        .frame(width: CategoryItemGridViewElement.cellWidth, height: CategoryItemGridViewElement.cellHeight)
+        .frame(width: cellWidth, height: cellHeight)
         .clipShape(.rect(cornerRadius: 5))
         .overlay(
             RoundedRectangle(cornerRadius: 5)
@@ -76,8 +81,10 @@ struct CategoryItemGridViewElement: View {
         )
 
         .overlay(alignment: .topTrailing, content: {
-            state == .categoryItems ?
-            Button(action: {}, label: {
+            state == .tasks ?
+            Button(action: {
+                // should handle the addition or subtraction here
+            }, label: {
                 Image(systemName: "plus")
                     .foregroundColor(.white)
             })
@@ -93,7 +100,7 @@ struct CategoryItemGridViewElement: View {
 
 #Preview {
     VStack {
-        CategoryItemGridViewElement(state: .mainCategories)
-        CategoryItemGridViewElement(state: .categoryItems)
+        CategoryItemGridViewElement<CategoryGridItemViewModel>(vm: CategoryGridItemViewModel(), state: .categories)
+        CategoryItemGridViewElement<TaskGridItemViewModel>(vm: TaskGridItemViewModel(), state: .tasks)
     }
 }

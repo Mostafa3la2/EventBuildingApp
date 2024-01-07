@@ -7,8 +7,11 @@
 
 import Foundation
 
-class CategoryItemsViewModel: CategoriesItemsModularViewModel {
-    
+
+class TasksViewModel: CategoriesItemsModularViewModel {
+
+    var dataSource: [any ModularGridItemViewModel] = [TaskGridItemViewModel()]
+
     @Published var title: String = "Category Title"
 
     @Published var subtitle: String = "Subtitle"
@@ -18,9 +21,11 @@ class CategoryItemsViewModel: CategoriesItemsModularViewModel {
 
 }
 
-class CategoryItemsDummyViewModel: CategoriesItemsModularViewModel {
+class TasksDummyViewModel: CategoriesItemsModularViewModel {
 
-    @Published var title: String = "Category Title"
+    var dataSource: [any ModularGridItemViewModel] = [TaskGridItemViewModel(title: "Dummy Task"), TaskGridItemViewModel(title: "Dummy Task"), TaskGridItemViewModel(title: "Dummy Task"), TaskGridItemViewModel(title: "Dummy Task")]
+
+    @Published var title: String = "Dummy Category Title"
 
     @Published var subtitle: String = "Subtitle"
 

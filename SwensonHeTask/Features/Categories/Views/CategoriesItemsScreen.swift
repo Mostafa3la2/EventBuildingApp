@@ -28,7 +28,7 @@ struct CategoriesItemsScreen<T>: View where T: CategoriesItemsModularViewModel {
     private func constructCategoriesGrid() -> some View {
         let dataSource = vm.dataSource as! [CategoryGridItemViewModel]
         let splittedDataSource = dataSource.chunked(into: 2)
-        return VStack {
+        return VStack(alignment: .leading) {
             ForEach(splittedDataSource, id: \.self) { column in
                 HStack {
                     ForEach(column, id: \.id) { item in
@@ -42,7 +42,7 @@ struct CategoriesItemsScreen<T>: View where T: CategoriesItemsModularViewModel {
     private func constructTasksGrid() -> some View{
         let dataSource = vm.dataSource as! [TaskGridItemViewModel]
         let splittedDataSource = dataSource.chunked(into: 2)
-        return VStack {
+        return VStack(alignment: .leading) {
             ForEach(splittedDataSource, id: \.self) { column in
                 HStack {
                     ForEach(column, id: \.id) { item in

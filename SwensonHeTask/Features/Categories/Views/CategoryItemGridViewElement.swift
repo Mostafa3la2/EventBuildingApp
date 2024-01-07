@@ -32,8 +32,22 @@ struct CategoryItemGridViewElement<T>: View where T: ModularGridItemViewModel {
         return Text("$ " + ("\(vm?.minBudget ?? 0) - \(vm?.maxBudget ?? 0)" ))
             .font(Font.custom("Avenir-Black", size: 14))
     }
-    private func toggleAddButton(state:  Binding<Bool>) {
-
+    @ViewBuilder private func createCountBadge() -> some View {
+        var count = (vm as? HasCountBadge)?.getBadgeCount()
+        switch count {
+        case .none:
+            EmptyView()
+        case 0:
+            EmptyView()
+        case .some(let badgeCount):
+            Text("\(badgeCount)")
+                .foregroundStyle(.white)
+                .frame(width: 24, height: 24)
+                .background(ColorsConstants.mainColor.opacity(0.5))
+                .clipShape(.circle)
+                .padding(.top, 12)
+                .padding(.trailing, 12)
+        }
     }
     var body: some View {
         VStack(alignment: .leading) {
@@ -73,26 +87,28 @@ struct CategoryItemGridViewElement<T>: View where T: ModularGridItemViewModel {
         )
 
         .overlay(alignment: .topTrailing, content: {
-            state == .tasks ?
-            Button(action: {
-                added.toggle()
-                if added {
-                    (vm as? CartHandler)?.addToCart()
-                } else {
-                    (vm as? CartHandler)?.removeFromCart()
-                }
+            if state == .tasks {
+                Button(action: {
+                    added.toggle()
+                    if added {
+                        (vm as? CartHandler)?.addToCart()
+                    } else {
+                        (vm as? CartHandler)?.removeFromCart()
+                    }
 
-            }, label: {
-                !added ? Image(systemName: "plus")
-                    .foregroundColor(.white) : Image(systemName: "minus")
-                    .foregroundColor(.white)
-            })
-            .frame(width: 24, height: 24)
-            .background(.black.opacity(0.5))
-            .clipShape(.circle)
-            .padding(.top, 12)
-            .padding(.trailing, 12) 
-            : nil
+                }, label: {
+                    !added ? Image(systemName: "plus")
+                        .foregroundColor(.white) : Image(systemName: "minus")
+                        .foregroundColor(.white)
+                })
+                .frame(width: 24, height: 24)
+                .background(.black.opacity(0.5))
+                .clipShape(.circle)
+                .padding(.top, 12)
+                .padding(.trailing, 12)
+            } else {
+                createCountBadge()
+            }
             // TODO: add indicator as design in category state
         })
     }

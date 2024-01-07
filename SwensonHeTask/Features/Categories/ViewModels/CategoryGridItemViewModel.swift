@@ -8,7 +8,10 @@
 import Foundation
 import Combine
 
-class CategoryGridItemViewModel: ModularGridItemViewModel, ObservableObject {
+protocol HasCountBadge {
+    func getBadgeCount() -> Int
+}
+class CategoryGridItemViewModel: ModularGridItemViewModel, ObservableObject, HasCountBadge {
 
     var id: Int?
     
@@ -23,6 +26,10 @@ class CategoryGridItemViewModel: ModularGridItemViewModel, ObservableObject {
         self.title = category.title
         self.imageURL = category.image
         self.id = category.id
+    }
+
+    func getBadgeCount() -> Int {
+        return cartManager.categoriesTasksCount[id!] ?? 0
     }
 }
 extension CategoryGridItemViewModel: Identifiable, Hashable {

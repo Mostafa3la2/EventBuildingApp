@@ -12,14 +12,19 @@ class CartManager: ObservableObject {
     @Published var cartItems: Set<CartItem> = []
     @Published var avgBudget: Double = 0
     @Published var categoriesAvgBudget: [Int: Double] = [:]
+    @Published var categoriesTasksCount: [Int: Int] = [:]
+
     func addItemToCart(cartItem: CartItem) {
         if !cartItems.contains(cartItem) {
             self.cartItems.insert(cartItem)
             self.avgBudget+=cartItem.avgBudget ?? 0
             if self.categoriesAvgBudget[cartItem.categoryID!] == nil {
                 self.categoriesAvgBudget[cartItem.categoryID!] = cartItem.avgBudget ?? 0
+                self.categoriesTasksCount[cartItem.categoryID!] = 1
             } else {
                 self.categoriesAvgBudget[cartItem.categoryID!]! += cartItem.avgBudget ?? 0
+                self.categoriesTasksCount[cartItem.categoryID!]! += 1
+
             }
         }
     }
@@ -29,6 +34,7 @@ class CartManager: ObservableObject {
             self.avgBudget-=cartItem.avgBudget ?? 0
             if self.categoriesAvgBudget[cartItem.categoryID!] != nil {
                 self.categoriesAvgBudget[cartItem.categoryID!]! -= cartItem.avgBudget ?? 0
+                self.categoriesTasksCount[cartItem.categoryID!]! -= 1
             }
         }
     }

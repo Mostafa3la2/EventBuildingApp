@@ -13,3 +13,10 @@ extension Array {
         }
     }
 }
+extension Date {
+    func currentTimeInHoursAndMinutes() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm"
+        return formatter.string(from: self)
+    }
+}

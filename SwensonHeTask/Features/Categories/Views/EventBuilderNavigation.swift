@@ -17,6 +17,11 @@ struct EventBuilderNavigation: View {
     private func constructRealView() -> some View {
         return CategoriesItemsScreen<CategoriesScreenViewModel>(vm: CategoriesScreenViewModel(cartManager: cart))
             .navigationTitle("")
+            .navigationBarItems(
+                trailing:
+                    NavigationLink(destination: SavedEventsScreen()) {
+                        Image(systemName: "bookmark")
+                    })
     }
     var body: some View {
         NavigationStack {

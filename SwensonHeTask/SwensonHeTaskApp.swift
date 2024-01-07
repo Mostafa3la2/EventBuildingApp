@@ -10,18 +10,7 @@ import SwiftData
 
 @main
 struct SwensonHeTaskApp: App {
-    var sharedModelContainer: ModelContainer = {
-        let schema = Schema([
-            Item.self,
-        ])
-        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 
-        do {
-            return try ModelContainer(for: schema, configurations: [modelConfiguration])
-        } catch {
-            fatalError("Could not create ModelContainer: \(error)")
-        }
-    }()
     @StateObject var cartManager = CartManager()
 
     var body: some Scene {
@@ -29,6 +18,6 @@ struct SwensonHeTaskApp: App {
             ContentView()
         }
         .environmentObject(cartManager)
-        .modelContainer(sharedModelContainer)
+        .modelContainer(for: Event.self)
     }
 }

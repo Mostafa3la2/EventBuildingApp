@@ -104,6 +104,6 @@ struct CategoryItemGridViewElement<T>: View where T: ModularGridItemViewModel {
     var task = TasksModelElement(id: 1, title: "test", minBudget: 100, maxBudget: 300, avgBudget: 200, image: "https://picsum.photos/200/300")
     return VStack {
         CategoryItemGridViewElement<CategoryGridItemViewModel>(vm: CategoryGridItemViewModel(cartManager: cartManager, category: category), state: .categories)
-        CategoryItemGridViewElement<TaskGridItemViewModel>(vm: TaskGridItemViewModel(cartManager: cartManager, task: task), state: .tasks)
+        CategoryItemGridViewElement<TaskGridItemViewModel>(vm: TaskGridItemViewModel(cartManager: cartManager, task: task, categoryID: 2), state: .tasks)
     }
 }

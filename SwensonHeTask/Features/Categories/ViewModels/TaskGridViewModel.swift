@@ -11,12 +11,12 @@ class TaskGridItemViewModel: ModularGridItemViewModel, HasBudget, ObservableObje
 
 
     func addToCart() {
-        var cartItem = CartItem(name: self.title, avgBudget: self.avgBudget, id: self.id)
+        let cartItem = CartItem(name: self.title, avgBudget: self.avgBudget, id: self.id, categoryID: categoryID)
         self.cartManager.addItemToCart(cartItem: cartItem)
     }
 
     func removeFromCart() {
-        var cartItem = CartItem(name: self.title, avgBudget: self.avgBudget, id: self.id)
+        let cartItem = CartItem(name: self.title, avgBudget: self.avgBudget, id: self.id, categoryID: categoryID)
         self.cartManager.removeItemFrom(cartItem: cartItem)
     }
 
@@ -36,7 +36,9 @@ class TaskGridItemViewModel: ModularGridItemViewModel, HasBudget, ObservableObje
 
     var imageURL: String? = "https://picsum.photos/200/300"
 
-    init(cartManager: CartManager, task: TasksModelElement) {
+    var categoryID: Int?
+
+    init(cartManager: CartManager, task: TasksModelElement, categoryID: Int) {
         self.cartManager = cartManager
         self.avgBudget = task.avgBudget
         self.minBudget = task.minBudget
@@ -44,6 +46,7 @@ class TaskGridItemViewModel: ModularGridItemViewModel, HasBudget, ObservableObje
         self.title = task.title
         self.imageURL = task.image
         self.id = task.id
+        self.categoryID = categoryID
     }
 }
 

@@ -25,9 +25,13 @@ class TasksViewModel: CategoriesItemsModularViewModel {
     init(cartManager: CartManager, categoryID: Int?) {
         self.cartManager = cartManager
         self.categoryID = categoryID
-        cartManager.$avgBudget
-                    .assign(to: \.avgBudget, on: self)
-                    .store(in: &cancellables)
+        if let categoryID {
+            cartManager.$categoriesAvgBudget
+                .sink(receiveValue: { dict in
+                    self.avgBudget = dict[categoryID] ?? 0
+                })
+                .store(in: &cancellables)
+        }
         self.getTasksInCategory()
     }
 
@@ -39,7 +43,7 @@ class TasksViewModel: CategoriesItemsModularViewModel {
             do {
                 let tasks = await CategoriesServices.sharedIntance.getTasksInCategory(categoryId: categoryID)
                 DispatchQueue.main.async {
-                    tasks?.forEach{self.dataSource.append(TaskGridItemViewModel(cartManager: self.cartManager, task: $0))}
+                    tasks?.forEach{self.dataSource.append(TaskGridItemViewModel(cartManager: self.cartManager, task: $0, categoryID: categoryID))}
                 }
             }
         }
@@ -61,7 +65,7 @@ class TasksDummyViewModel: CategoriesItemsModularViewModel {
     init(cartManager: CartManager) {
         self.cartManager = cartManager
         let task = TasksModelElement(id: 1, title: "test", minBudget: 100, maxBudget: 300, avgBudget: 200, image: "https://picsum.photos/200/300")
-        dataSource = Array(repeating: TaskGridItemViewModel(cartManager: cartManager, task: task), count: 4)
+        dataSource = Array(repeating: TaskGridItemViewModel(cartManager: cartManager, task: task, categoryID: 2), count: 4)
     }
 
 }

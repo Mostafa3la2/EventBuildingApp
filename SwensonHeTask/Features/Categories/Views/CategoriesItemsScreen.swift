@@ -6,13 +6,14 @@
 //
 
 import SwiftUI
-
+import SwiftData
 enum PageState {
     case categories
     case tasks
 }
 // Using generics here allows us to reuse the screen differently by passing different VMs that conform to same protocol which provides similar data
 struct CategoriesItemsScreen<T>: View where T: CategoriesItemsModularViewModel {
+    @Environment(\.modelContext) var modelContext
     @ObservedObject var vm: T
     var state: PageState = .categories
     @State private var showSavePopup = false
@@ -113,6 +114,7 @@ struct CategoriesItemsScreen<T>: View where T: CategoriesItemsModularViewModel {
                     constructTasksGrid()
                 }
                 state == .categories ? Button(action: {
+                    modelContext.insert(Event(avgBudget: vm.avgBudget, minBudget: vm.minBudget, maxBudget: vm.maxBudget, time: Date.currentTimeInHoursAndMinutes(Date.now)()))
                     self.showSavePopup = true
                 }, label: {
                     Text("Save")

@@ -23,8 +23,13 @@ private struct ImageFrameModifier: ViewModifier {
 }
 struct CategoryItemGridViewElement<T>: View where T: ModularGridItemViewModel {
     @ObservedObject var vm: T
-    @State var added: Bool = false
+    @State var added: Bool
     var state: PageState = .categories
+    init(vm: any ModularGridItemViewModel, state: PageState = .categories) {
+        self.vm = vm as! T
+        self.added = ((vm as? TaskGridItemViewModel)?.added ?? false)
+        self.state = state
+    }
     private let cellWidth: CGFloat = 164
     private let cellHeight: CGFloat = 149
 

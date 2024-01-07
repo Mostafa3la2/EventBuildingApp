@@ -11,7 +11,7 @@ struct EventBuilderNavigation: View {
     var preview = false
     @EnvironmentObject var cart: CartManager
     private func constructPreview() -> some View {
-        return CategoriesItemsScreen<CategoriesScreenDummyViewModel>(vm: CategoriesScreenDummyViewModel(cartManager: cart))
+        return CategoriesItemsScreen<CategoriesScreenDummyViewModel>(vm: CategoriesScreenDummyViewModel(cartManager: CartManager()))
             .navigationTitle("")
     }
     private func constructRealView() -> some View {

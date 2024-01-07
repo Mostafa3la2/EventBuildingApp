@@ -14,7 +14,11 @@ struct ContentView: View {
     @EnvironmentObject var cartManager: CartManager
 
     var body: some View {
-        EventBuilderNavigation(cart: _cartManager)
+        if ProcessInfo.processInfo.environment["UITest"] == "true" {
+            EventBuilderNavigation(preview: true)
+        } else {
+            EventBuilderNavigation(cart: _cartManager)
+        }
     }
 }
 

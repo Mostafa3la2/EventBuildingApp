@@ -20,6 +20,10 @@ class TasksViewModel: CategoriesItemsModularViewModel {
 
     @Published var avgBudget: Double = 0
 
+    var minBudget: Double = 0
+
+    var maxBudget: Double = 0
+
     var categoryID: Int?
     init(cartManager: CartManager, categoryID: Int?, categoryName: String?) {
         self.cartManager = cartManager
@@ -31,6 +35,10 @@ class TasksViewModel: CategoriesItemsModularViewModel {
                     self.avgBudget = dict[categoryID] ?? 0
                 })
                 .store(in: &cancellables)
+        }
+        for i in cartManager.cartItems {
+            minBudget+=i.minBudget ?? 0
+            maxBudget+=i.maxBudget ?? 0
         }
         self.getTasksInCategory()
     }
@@ -52,6 +60,7 @@ class TasksViewModel: CategoriesItemsModularViewModel {
 
 class TasksDummyViewModel: CategoriesItemsModularViewModel {
 
+
     var cartManager: CartManager
 
     var dataSource: [any ModularGridItemViewModel]
@@ -60,7 +69,11 @@ class TasksDummyViewModel: CategoriesItemsModularViewModel {
 
     @Published var subtitle: String = "Subtitle"
 
-    @Published var avgBudget: Double = 0
+    @Published var avgBudget: Double = 20
+    
+    var minBudget: Double = 10
+
+    var maxBudget: Double = 30
 
     init(cartManager: CartManager) {
         self.cartManager = cartManager

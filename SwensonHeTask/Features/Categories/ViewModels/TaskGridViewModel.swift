@@ -11,12 +11,12 @@ class TaskGridItemViewModel: ModularGridItemViewModel, HasBudget, ObservableObje
 
 
     func addToCart() {
-        let cartItem = CartItem(name: self.title, avgBudget: self.avgBudget, id: self.id, categoryID: categoryID)
+        let cartItem = CartItem(name: self.title, avgBudget: self.avgBudget, minBudget: self.minBudget, maxBudget: self.maxBudget, id: self.id, categoryID: categoryID)
         self.cartManager.addItemToCart(cartItem: cartItem)
     }
 
     func removeFromCart() {
-        let cartItem = CartItem(name: self.title, avgBudget: self.avgBudget, id: self.id, categoryID: categoryID)
+        let cartItem = CartItem(name: self.title, avgBudget: self.avgBudget, minBudget: self.minBudget, maxBudget: self.maxBudget, id: self.id, categoryID: categoryID)
         self.cartManager.removeItemFrom(cartItem: cartItem)
     }
 
@@ -26,11 +26,11 @@ class TaskGridItemViewModel: ModularGridItemViewModel, HasBudget, ObservableObje
 
     @Published var added: Bool = false
 
-    var avgBudget: Double? = 600
+    var avgBudget: Double? = 0
 
-    var minBudget: Double? = 300
+    var minBudget: Double? = 0
 
-    var maxBudget: Double? = 900
+    var maxBudget: Double? = 0
 
     var title: String? = "Task"
 

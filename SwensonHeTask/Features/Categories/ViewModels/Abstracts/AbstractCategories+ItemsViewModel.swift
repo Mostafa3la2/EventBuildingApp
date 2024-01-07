@@ -17,6 +17,12 @@ protocol CategoriesItemsModularViewModel: ObservableObject {
     var avgBudget: Double {
         get set
     }
+    var minBudget: Double {
+        get set
+    }
+    var maxBudget: Double {
+        get set
+    }
     var dataSource: [any ModularGridItemViewModel] {
         get set
     }

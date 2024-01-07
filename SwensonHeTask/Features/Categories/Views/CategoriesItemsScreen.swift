@@ -15,6 +15,7 @@ enum PageState {
 struct CategoriesItemsScreen<T>: View where T: CategoriesItemsModularViewModel {
     @ObservedObject var vm: T
     var state: PageState = .categories
+    @State private var showSavePopup = false
 
     private func constructCategoriesGridCell(item: any ModularGridItemViewModel) -> some View {
         return NavigationLink(destination: CategoriesItemsScreen<TasksViewModel>(vm: TasksViewModel(cartManager: vm.cartManager, categoryID: item.id, categoryName: item.title), state: .tasks)){
@@ -52,6 +53,35 @@ struct CategoriesItemsScreen<T>: View where T: CategoriesItemsModularViewModel {
             }
         }
     }
+    private func savePopupview() -> some View {
+        let range = "\(vm.minBudget) - \(vm.maxBudget)"
+        return VStack(alignment: .center) {
+            Spacer()
+            Text("Event Saved!")
+              .font(
+                Font.custom("Avenir", size: 18)
+                  .weight(.black)
+              )
+              .multilineTextAlignment(.center)
+              .foregroundColor(.black)
+            Text("$ " + range)
+              .font(
+                Font.custom("Avenir", size: 37)
+                  .weight(.black)
+              )
+              .multilineTextAlignment(.center)
+              .foregroundColor(.black)
+            Spacer()
+        }
+        .frame(
+              minWidth: 0,
+              maxWidth: .infinity,
+              minHeight: 0,
+              maxHeight: .infinity,
+              alignment: .center
+            )
+        .background(ColorsConstants.backgroundColor)
+    }
     var body: some View {
         ScrollView {
             VStack {
@@ -82,7 +112,9 @@ struct CategoriesItemsScreen<T>: View where T: CategoriesItemsModularViewModel {
                 } else {
                     constructTasksGrid()
                 }
-                state == .categories ? Button(action: {}, label: {
+                state == .categories ? Button(action: {
+                    self.showSavePopup = true
+                }, label: {
                     Text("Save")
                         .font(
                             Font.custom("Avenir", size: 16)
@@ -90,13 +122,27 @@ struct CategoriesItemsScreen<T>: View where T: CategoriesItemsModularViewModel {
                         )
                         .multilineTextAlignment(.center)
                         .foregroundColor(.white)
+                        .frame(width: 343, height: 52)
+
                 })
-                .frame(width: 343, height: 52)
                 .background(ColorsConstants.mainColor)
                 .clipShape(.rect(cornerRadius: 5))
-                .padding() : nil
+                .padding()
+                .popover(isPresented: $showSavePopup) {
+                    savePopupview()
+                        .font(.headline)
+                        .padding()
+                }
+                : nil
             }
         }
+        .frame(
+              minWidth: 0,
+              maxWidth: .infinity,
+              minHeight: 0,
+              maxHeight: .infinity,
+              alignment: .center
+            )
         .background(ColorsConstants.backgroundColor)
     }
 }

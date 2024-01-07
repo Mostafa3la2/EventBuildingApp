@@ -20,6 +20,9 @@ class CategoriesScreenViewModel: CategoriesItemsModularViewModel {
     var subtitle: String = "Add to your event to view our cost estimate."
 
     @Published var avgBudget: Double = 0
+    var minBudget: Double = 0
+
+    var maxBudget: Double = 0
 
     init(cartManager: CartManager) {
         self.cartManager = cartManager
@@ -27,6 +30,10 @@ class CategoriesScreenViewModel: CategoriesItemsModularViewModel {
                     .assign(to: \.avgBudget, on: self)
                     .store(in: &cancellables)
         self.getCategories()
+        for i in cartManager.cartItems {
+            minBudget+=i.minBudget ?? 0
+            maxBudget+=i.maxBudget ?? 0
+        }
     }
     func getCategories() {
         Task {
@@ -41,6 +48,10 @@ class CategoriesScreenViewModel: CategoriesItemsModularViewModel {
 }
 
 class CategoriesScreenDummyViewModel: CategoriesItemsModularViewModel {
+    var minBudget: Double = 10
+
+    var maxBudget: Double = 30
+
 
     var cartManager: CartManager
 
@@ -50,7 +61,7 @@ class CategoriesScreenDummyViewModel: CategoriesItemsModularViewModel {
 
     @Published var subtitle: String = "Subtitle"
 
-    @Published var avgBudget: Double = 0
+    @Published var avgBudget: Double = 20
 
     init(cartManager: CartManager) {
         self.cartManager = cartManager

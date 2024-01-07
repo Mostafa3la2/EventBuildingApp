@@ -7,17 +7,22 @@
 
 import Foundation
 
-protocol ModularGridItemViewModel: ObservableObject {
-    var title: String { get }
-    var imageURL: String { get }
+protocol ModularGridItemViewModel: ObservableObject, Identifiable, Hashable {
+    var title: String? { get }
+    var imageURL: String? { get }
+    var id: Int? { get set }
+    var cartManager: CartManager {
+        get set
+    }
 }
 
 protocol HasBudget {
-    var avgBudget: String { get }
-    var minBudget: String { get }
-    var maxBudget: String { get }
+    var avgBudget: Double? { get }
+    var minBudget: Double? { get }
+    var maxBudget: Double? { get }
 }
 
-protocol CanAddOrSubtract {
-    func operationDone(added: Bool)
+protocol CartHandler {
+    func addToCart()
+    func removeFromCart()
 }

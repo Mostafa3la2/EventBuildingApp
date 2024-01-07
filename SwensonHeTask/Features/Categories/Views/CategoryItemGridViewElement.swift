@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+import Kingfisher
 private struct ImageFrameModifier: ViewModifier {
     private let imageHeight: CGFloat = 104
 
@@ -29,7 +29,7 @@ struct CategoryItemGridViewElement<T>: View where T: ModularGridItemViewModel {
     private let cellHeight: CGFloat = 149
 
     private func createBudgetLabel(vm: HasBudget?) -> some View {
-        return Text(vm?.avgBudget ?? "XX")
+        return Text("$ " + ("\(vm?.minBudget ?? 0) - \(vm?.maxBudget ?? 0)" ))
             .font(Font.custom("Avenir-Black", size: 14))
     }
     private func toggleAddButton(state:  Binding<Bool>) {
@@ -37,29 +37,17 @@ struct CategoryItemGridViewElement<T>: View where T: ModularGridItemViewModel {
     }
     var body: some View {
         VStack(alignment: .leading) {
-            AsyncImage(url: URL(string: vm.imageURL)) { phase in
-                switch phase {
-                case .empty:
+            KFImage(URL(string: vm.imageURL ?? ""))
+                .placeholder{
                     ProgressView()
-                        .modifier(ImageFrameModifier())
-                        .clipped()
-                case .success(let image):
-                    image.resizable()
-                        .scaledToFill()
-                        .modifier(ImageFrameModifier())
-                        .clipped()
-                case .failure:
-                    Spacer()
-                        .modifier(ImageFrameModifier())
-                        .clipped()
-                @unknown default:
-                    Spacer()
-                        .modifier(ImageFrameModifier())
                 }
-            }
+                .resizable()
+                .scaledToFill()
+                .modifier(ImageFrameModifier())
+                .clipped()
             HStack {
                 VStack(alignment: .leading) {
-                    Text(vm.title)
+                    Text(vm.title ?? "")
                         .font(
                             Font.custom("Avenir", size: 14)
                                 .weight(.medium)
@@ -87,9 +75,12 @@ struct CategoryItemGridViewElement<T>: View where T: ModularGridItemViewModel {
         .overlay(alignment: .topTrailing, content: {
             state == .tasks ?
             Button(action: {
-                // should handle the addition or subtraction here
                 added.toggle()
-                (vm as? CanAddOrSubtract)?.operationDone(added: added)
+                if added {
+                    (vm as? CartHandler)?.addToCart()
+                } else {
+                    (vm as? CartHandler)?.removeFromCart()
+                }
 
             }, label: {
                 !added ? Image(systemName: "plus")
@@ -102,13 +93,17 @@ struct CategoryItemGridViewElement<T>: View where T: ModularGridItemViewModel {
             .padding(.top, 12)
             .padding(.trailing, 12) 
             : nil
+            // TODO: add indicator as design in category state
         })
     }
 }
 
 #Preview {
-    VStack {
-        CategoryItemGridViewElement<CategoryGridItemViewModel>(vm: CategoryGridItemViewModel(), state: .categories)
-        CategoryItemGridViewElement<TaskGridItemViewModel>(vm: TaskGridItemViewModel(), state: .tasks)
+    var cartManager = CartManager()
+    var category = CategoriesModelElement(id: 1, title: "test", image: "https://picsum.photos/200/300")
+    var task = TasksModelElement(id: 1, title: "test", minBudget: 100, maxBudget: 300, avgBudget: 200, image: "https://picsum.photos/200/300")
+    return VStack {
+        CategoryItemGridViewElement<CategoryGridItemViewModel>(vm: CategoryGridItemViewModel(cartManager: cartManager, category: category), state: .categories)
+        CategoryItemGridViewElement<TaskGridItemViewModel>(vm: TaskGridItemViewModel(cartManager: cartManager, task: task, categoryID: 2), state: .tasks)
     }
 }

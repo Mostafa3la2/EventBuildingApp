@@ -7,27 +7,56 @@
 
 import Foundation
 
+class TaskGridItemViewModel: ModularGridItemViewModel, HasBudget, ObservableObject, CartHandler {
 
-class TaskGridItemViewModel: ModularGridItemViewModel, HasBudget, CanAddOrSubtract, ObservableObject {
 
-    func operationDone(added: Bool) {
-        
+    func addToCart() {
+        let cartItem = CartItem(name: self.title, avgBudget: self.avgBudget, id: self.id, categoryID: categoryID)
+        self.cartManager.addItemToCart(cartItem: cartItem)
     }
-    
+
+    func removeFromCart() {
+        let cartItem = CartItem(name: self.title, avgBudget: self.avgBudget, id: self.id, categoryID: categoryID)
+        self.cartManager.removeItemFrom(cartItem: cartItem)
+    }
+
+    var id: Int?
+
+    var cartManager: CartManager
+
     @Published var added: Bool = false
 
+    var avgBudget: Double? = 600
 
+    var minBudget: Double? = 300
 
-    var avgBudget: String = "600"
+    var maxBudget: Double? = 900
 
-    var minBudget: String = "300"
+    var title: String? = "Task"
 
-    var maxBudget: String = "900"
+    var imageURL: String? = "https://picsum.photos/200/300"
 
-    var title: String = "Task"
+    var categoryID: Int?
 
-    var imageURL: String = "https://picsum.photos/200/300"
-
+    init(cartManager: CartManager, task: TasksModelElement, categoryID: Int) {
+        self.cartManager = cartManager
+        self.avgBudget = task.avgBudget
+        self.minBudget = task.minBudget
+        self.maxBudget = task.maxBudget
+        self.title = task.title
+        self.imageURL = task.image
+        self.id = task.id
+        self.categoryID = categoryID
+    }
 }
 
+extension TaskGridItemViewModel: Identifiable, Hashable {
 
+    public func hash(into hasher: inout Hasher) {
+        return hasher.combine(id)
+    }
+
+    public static func == (lhs: TaskGridItemViewModel, rhs: TaskGridItemViewModel) -> Bool {
+        return lhs.id == rhs.id
+    }
+}

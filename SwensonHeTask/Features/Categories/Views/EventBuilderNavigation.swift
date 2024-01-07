@@ -8,10 +8,23 @@
 import SwiftUI
 
 struct EventBuilderNavigation: View {
+    var preview = false
+    @EnvironmentObject var cart: CartManager
+    private func constructPreview() -> some View {
+        return CategoriesItemsScreen<CategoriesScreenDummyViewModel>(vm: CategoriesScreenDummyViewModel(cartManager: cart))
+            .navigationTitle("")
+    }
+    private func constructRealView() -> some View {
+        return CategoriesItemsScreen<CategoriesScreenViewModel>(vm: CategoriesScreenViewModel(cartManager: cart))
+            .navigationTitle("")
+    }
     var body: some View {
         NavigationStack {
-            CategoriesItemsScreen(vm: CategoriesScreenViewModel())
-                .navigationTitle("")
+            if preview {
+                constructPreview()
+            } else {
+                constructRealView()
+            }
         }
         .tint(ColorsConstants.mainColor)
 
@@ -19,5 +32,5 @@ struct EventBuilderNavigation: View {
 }
 
 #Preview {
-    EventBuilderNavigation()
+    EventBuilderNavigation(preview: true)
 }

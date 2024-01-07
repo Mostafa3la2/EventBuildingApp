@@ -22,11 +22,13 @@ struct SwensonHeTaskApp: App {
             fatalError("Could not create ModelContainer: \(error)")
         }
     }()
+    @StateObject var cartManager = CartManager()
 
     var body: some Scene {
         WindowGroup {
             ContentView()
         }
+        .environmentObject(cartManager)
         .modelContainer(sharedModelContainer)
     }
 }

@@ -21,7 +21,7 @@
 		0D3BD2CB2B49C6950053B4A5 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3BD2CA2B49C6950053B4A5 /* Colors.swift */; };
 		0DEC8EFC2B49F48B0080DD7B /* EventBuilderNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DEC8EFB2B49F48B0080DD7B /* EventBuilderNavigation.swift */; };
 		0DEC8EFE2B4A16D80080DD7B /* CategoriesScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DEC8EFD2B4A16D80080DD7B /* CategoriesScreenViewModel.swift */; };
-		0DEC8F002B4A16E50080DD7B /* CategoryItemsScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DEC8EFF2B4A16E50080DD7B /* CategoryItemsScreenViewModel.swift */; };
+		0DEC8F002B4A16E50080DD7B /* TasksScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DEC8EFF2B4A16E50080DD7B /* TasksScreenViewModel.swift */; };
 		0DEC8F022B4A1BF60080DD7B /* CategoryGridItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DEC8F012B4A1BF60080DD7B /* CategoryGridItemViewModel.swift */; };
 		0DEC8F052B4A1DBA0080DD7B /* AbstractGridItemViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DEC8F042B4A1DBA0080DD7B /* AbstractGridItemViewModels.swift */; };
 		0DEC8F072B4A1FA90080DD7B /* TaskGridViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DEC8F062B4A1FA90080DD7B /* TaskGridViewModel.swift */; };
@@ -30,6 +30,8 @@
 		0DEC8F122B4AD36B0080DD7B /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DEC8F112B4AD36B0080DD7B /* NetworkManager.swift */; };
 		0DEC8F142B4AD3790080DD7B /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DEC8F132B4AD3790080DD7B /* NetworkError.swift */; };
 		0DEC8F172B4AD3E30080DD7B /* CategoriesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DEC8F162B4AD3E30080DD7B /* CategoriesModel.swift */; };
+		0DEC8F192B4AE7A30080DD7B /* TasksModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DEC8F182B4AE7A30080DD7B /* TasksModel.swift */; };
+		0DEC8F1C2B4AFF9A0080DD7B /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 0DEC8F1B2B4AFF9A0080DD7B /* Kingfisher */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,7 +69,7 @@
 		0D3BD2CA2B49C6950053B4A5 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		0DEC8EFB2B49F48B0080DD7B /* EventBuilderNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventBuilderNavigation.swift; sourceTree = "<group>"; };
 		0DEC8EFD2B4A16D80080DD7B /* CategoriesScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesScreenViewModel.swift; sourceTree = "<group>"; };
-		0DEC8EFF2B4A16E50080DD7B /* CategoryItemsScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryItemsScreenViewModel.swift; sourceTree = "<group>"; };
+		0DEC8EFF2B4A16E50080DD7B /* TasksScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksScreenViewModel.swift; sourceTree = "<group>"; };
 		0DEC8F012B4A1BF60080DD7B /* CategoryGridItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryGridItemViewModel.swift; sourceTree = "<group>"; };
 		0DEC8F042B4A1DBA0080DD7B /* AbstractGridItemViewModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractGridItemViewModels.swift; sourceTree = "<group>"; };
 		0DEC8F062B4A1FA90080DD7B /* TaskGridViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskGridViewModel.swift; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 		0DEC8F112B4AD36B0080DD7B /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		0DEC8F132B4AD3790080DD7B /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		0DEC8F162B4AD3E30080DD7B /* CategoriesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesModel.swift; sourceTree = "<group>"; };
+		0DEC8F182B4AE7A30080DD7B /* TasksModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +86,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0DEC8F1C2B4AFF9A0080DD7B /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -213,7 +217,7 @@
 			children = (
 				0DEC8F032B4A1D9C0080DD7B /* Abstracts */,
 				0DEC8EFD2B4A16D80080DD7B /* CategoriesScreenViewModel.swift */,
-				0DEC8EFF2B4A16E50080DD7B /* CategoryItemsScreenViewModel.swift */,
+				0DEC8EFF2B4A16E50080DD7B /* TasksScreenViewModel.swift */,
 				0DEC8F012B4A1BF60080DD7B /* CategoryGridItemViewModel.swift */,
 				0DEC8F062B4A1FA90080DD7B /* TaskGridViewModel.swift */,
 				0DEC8F0B2B4ABA7F0080DD7B /* CartViewModel.swift */,
@@ -251,6 +255,7 @@
 			isa = PBXGroup;
 			children = (
 				0DEC8F162B4AD3E30080DD7B /* CategoriesModel.swift */,
+				0DEC8F182B4AE7A30080DD7B /* TasksModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -271,6 +276,9 @@
 			dependencies = (
 			);
 			name = SwensonHeTask;
+			packageProductDependencies = (
+				0DEC8F1B2B4AFF9A0080DD7B /* Kingfisher */,
+			);
 			productName = SwensonHeTask;
 			productReference = 0D3BD28E2B49BB800053B4A5 /* SwensonHeTask.app */;
 			productType = "com.apple.product-type.application";
@@ -343,6 +351,9 @@
 				Base,
 			);
 			mainGroup = 0D3BD2852B49BB800053B4A5;
+			packageReferences = (
+				0DEC8F1A2B4AFF9A0080DD7B /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = 0D3BD28F2B49BB800053B4A5 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -397,7 +408,8 @@
 				0D3BD2942B49BB800053B4A5 /* ContentView.swift in Sources */,
 				0D3BD2962B49BB800053B4A5 /* Item.swift in Sources */,
 				0DEC8F052B4A1DBA0080DD7B /* AbstractGridItemViewModels.swift in Sources */,
-				0DEC8F002B4A16E50080DD7B /* CategoryItemsScreenViewModel.swift in Sources */,
+				0DEC8F002B4A16E50080DD7B /* TasksScreenViewModel.swift in Sources */,
+				0DEC8F192B4AE7A30080DD7B /* TasksModel.swift in Sources */,
 				0D3BD2CB2B49C6950053B4A5 /* Colors.swift in Sources */,
 				0D3BD2C22B49BE150053B4A5 /* CategoriesItemsScreen.swift in Sources */,
 				0D3BD2C82B49C2680053B4A5 /* CategoryItemGridViewElement.swift in Sources */,
@@ -732,6 +744,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0DEC8F1A2B4AFF9A0080DD7B /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.10.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0DEC8F1B2B4AFF9A0080DD7B /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0DEC8F1A2B4AFF9A0080DD7B /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 0D3BD2862B49BB800053B4A5 /* Project object */;
 }

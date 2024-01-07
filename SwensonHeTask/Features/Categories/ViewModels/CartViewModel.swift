@@ -9,24 +9,24 @@ import Foundation
 import Combine
 
 class CartManager: ObservableObject {
-    @Published var cartItems: [CartItem] = []
+    @Published var cartItems: Set<CartItem> = []
     @Published var avgBudget: Double = 0
     func addItemToCart(cartItem: CartItem) {
         if !cartItems.contains(cartItem) {
-            self.cartItems.append(cartItem)
+            self.cartItems.insert(cartItem)
             self.avgBudget+=cartItem.avgBudget ?? 0
 
         }
     }
     func removeItemFrom(cartItem: CartItem) {
         if cartItems.contains(cartItem) {
-            self.cartItems.removeAll{$0 == cartItem}
+            self.cartItems.remove(cartItem)
             self.avgBudget-=cartItem.avgBudget ?? 0
         }
     }
 }
 
-struct CartItem: Equatable{
+struct CartItem: Hashable {
 
     var name: String?
     var avgBudget: Double?

@@ -9,15 +9,18 @@ import Foundation
 import Combine
 
 class CategoryGridItemViewModel: ModularGridItemViewModel, ObservableObject {
+    var id: Int?
+    
     var cartManager: CartManager
     
-    var title: String = "Category"
+    var title: String? = "Category"
 
-    var imageURL: String = "https://picsum.photos/200/300"
+    var imageURL: String? = "https://picsum.photos/200/300"
 
     init(cartManager: CartManager, category: CategoriesModelElement) {
         self.cartManager = cartManager
-        self.title = category.title ?? ""
-        self.imageURL = category.image ?? ""
+        self.title = category.title
+        self.imageURL = category.image
+        self.id = category.id
     }
 }

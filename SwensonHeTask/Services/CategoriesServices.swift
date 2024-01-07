@@ -21,6 +21,19 @@ enum CategoriesServices {
             return nil
         }
     }
+
+    func getTasksInCategory(categoryId: Int) async -> TasksModel? {
+        var requestURL = "https://swensonhe-dev-challenge.s3.us-west-2.amazonaws.com/categories/{0}.json"
+        requestURL = requestURL.replacingOccurrences(of: "{0}", with: "\(categoryId)")
+        let url = URL(string: requestURL)!
+        do {
+            let tasks: TasksModel = try await NetworkManager.shared.request(url)
+            return tasks
+        } catch {
+            print("Error: \(error)")
+            return nil
+        }
+    }
 }
 
 

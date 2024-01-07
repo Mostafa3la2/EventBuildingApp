@@ -10,7 +10,7 @@ import Combine
 
 class CategoriesScreenViewModel: CategoriesItemsModularViewModel {
 
-    @Published var cartManager: CartManager
+    var cartManager: CartManager
     private var cancellables: Set<AnyCancellable> = []
 
     @Published var dataSource: [any ModularGridItemViewModel] = []

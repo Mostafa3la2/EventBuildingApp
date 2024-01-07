@@ -17,7 +17,7 @@ struct CategoriesItemsScreen<T>: View where T: CategoriesItemsModularViewModel {
     var state: PageState = .categories
 
     private func constructCategoriesGridCell(index: Int) -> some View {
-        return NavigationLink(destination: CategoriesItemsScreen<TasksViewModel>(vm: TasksViewModel(cartManager: vm.cartManager), state: .tasks)){
+        return NavigationLink(destination: CategoriesItemsScreen<TasksViewModel>(vm: TasksViewModel(cartManager: vm.cartManager, categoryID: vm.dataSource[index].id), state: .tasks)){
             CategoryItemGridViewElement<CategoryGridItemViewModel>(vm: vm.dataSource[index] as! CategoryGridItemViewModel)
         }
     }
@@ -42,7 +42,7 @@ struct CategoriesItemsScreen<T>: View where T: CategoriesItemsModularViewModel {
                     .multilineTextAlignment(.center)
                     .frame(width: 310, height: 68, alignment: .top)
                     .foregroundColor(ColorsConstants.subtitleColor)
-                Text("$ \(vm.avgBudget)")
+                Text("\(vm.avgBudget == 0 ? "-":"$ \(vm.avgBudget)")")
                     .font(
                         Font.custom("Avenir", size: 37)
                             .weight(.black)

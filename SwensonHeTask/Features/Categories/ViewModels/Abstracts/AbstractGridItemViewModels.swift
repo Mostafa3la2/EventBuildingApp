@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol ModularGridItemViewModel {
+protocol ModularGridItemViewModel: ObservableObject {
     var title: String { get }
     var imageURL: String { get }
 }
@@ -19,6 +19,5 @@ protocol HasBudget {
 }
 
 protocol CanAddOrSubtract {
-    func add()
-    func subtract()
+    func operationDone(added: Bool)
 }

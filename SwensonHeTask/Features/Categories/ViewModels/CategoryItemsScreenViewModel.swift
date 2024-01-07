@@ -23,7 +23,7 @@ class TasksViewModel: CategoriesItemsModularViewModel {
 
 class TasksDummyViewModel: CategoriesItemsModularViewModel {
 
-    var dataSource: [any ModularGridItemViewModel] = [TaskGridItemViewModel(title: "Dummy Task"), TaskGridItemViewModel(title: "Dummy Task"), TaskGridItemViewModel(title: "Dummy Task"), TaskGridItemViewModel(title: "Dummy Task")]
+    var dataSource: [any ModularGridItemViewModel] = Array(repeating: TaskGridItemViewModel(), count: 4)
 
     @Published var title: String = "Dummy Category Title"
 

@@ -8,14 +8,15 @@
 import Foundation
 
 
-struct TaskGridItemViewModel: ModularGridItemViewModel, HasBudget {
-    func add() {
+class TaskGridItemViewModel: ModularGridItemViewModel, HasBudget, CanAddOrSubtract, ObservableObject {
 
+    func operationDone(added: Bool) {
+        
     }
+    
+    @Published var added: Bool = false
 
-    func subtract() {
 
-    }
 
     var avgBudget: String = "600"
 
@@ -23,7 +24,7 @@ struct TaskGridItemViewModel: ModularGridItemViewModel, HasBudget {
 
     var maxBudget: String = "900"
 
-    var title: String = "Real Task"
+    var title: String = "Task"
 
     var imageURL: String = "https://picsum.photos/200/300"
 

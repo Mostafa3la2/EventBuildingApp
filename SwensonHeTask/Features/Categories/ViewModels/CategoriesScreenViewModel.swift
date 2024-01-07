@@ -23,7 +23,7 @@ class CategoriesScreenViewModel: CategoriesItemsModularViewModel {
 
 class CategoriesScreenDummyViewModel: CategoriesItemsModularViewModel {
 
-    var dataSource: [any ModularGridItemViewModel] = [CategoryGridItemViewModel(title: "Dummy Category"), CategoryGridItemViewModel(title: "Dummy Category"), CategoryGridItemViewModel(title: "Dummy Category"), CategoryGridItemViewModel(title: "Dummy Category")]
+    var dataSource: [any ModularGridItemViewModel] = Array(repeating: CategoryGridItemViewModel(), count: 4)
 
     @Published var title: String = "Dummy Event Builder"
 

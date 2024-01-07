@@ -22,14 +22,18 @@ private struct ImageFrameModifier: ViewModifier {
     }
 }
 struct CategoryItemGridViewElement<T>: View where T: ModularGridItemViewModel {
-    var vm: T
+    @ObservedObject var vm: T
+    @State var added: Bool = false
     var state: PageState = .categories
     private let cellWidth: CGFloat = 164
     private let cellHeight: CGFloat = 149
 
-    func createBudgetLabel(vm: HasBudget?) -> some View {
+    private func createBudgetLabel(vm: HasBudget?) -> some View {
         return Text(vm?.avgBudget ?? "XX")
             .font(Font.custom("Avenir-Black", size: 14))
+    }
+    private func toggleAddButton(state:  Binding<Bool>) {
+
     }
     var body: some View {
         VStack(alignment: .leading) {
@@ -84,16 +88,20 @@ struct CategoryItemGridViewElement<T>: View where T: ModularGridItemViewModel {
             state == .tasks ?
             Button(action: {
                 // should handle the addition or subtraction here
+                added.toggle()
+                (vm as? CanAddOrSubtract)?.operationDone(added: added)
+
             }, label: {
-                Image(systemName: "plus")
+                !added ? Image(systemName: "plus")
+                    .foregroundColor(.white) : Image(systemName: "minus")
                     .foregroundColor(.white)
             })
             .frame(width: 24, height: 24)
             .background(.black.opacity(0.5))
             .clipShape(.circle)
             .padding(.top, 12)
-            .padding(.trailing, 12) :
-            nil
+            .padding(.trailing, 12) 
+            : nil
         })
     }
 }

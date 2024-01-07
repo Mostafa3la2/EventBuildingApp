@@ -8,8 +8,8 @@
 import Foundation
 
 
-struct CategoryGridItemViewModel: ModularGridItemViewModel {
-    var title: String = "Real Category"
+class CategoryGridItemViewModel: ModularGridItemViewModel, ObservableObject {
+    var title: String = "Category"
 
     var imageURL: String = "https://picsum.photos/200/300"
 

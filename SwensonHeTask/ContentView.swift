@@ -10,7 +10,6 @@ import SwiftData
 
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
-    @Query private var items: [Item]
     @EnvironmentObject var cartManager: CartManager
 
     var body: some View {
@@ -27,5 +26,4 @@ struct ContentView: View {
 
     return ContentView()
         .environmentObject(cartManager)
-        .modelContainer(for: Item.self, inMemory: true)
 }

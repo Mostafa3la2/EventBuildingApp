@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		0D3BD2922B49BB800053B4A5 /* SwensonHeTaskApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3BD2912B49BB800053B4A5 /* SwensonHeTaskApp.swift */; };
 		0D3BD2942B49BB800053B4A5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3BD2932B49BB800053B4A5 /* ContentView.swift */; };
-		0D3BD2962B49BB800053B4A5 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3BD2952B49BB800053B4A5 /* Item.swift */; };
 		0D3BD2982B49BB820053B4A5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D3BD2972B49BB820053B4A5 /* Assets.xcassets */; };
 		0D3BD29B2B49BB820053B4A5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D3BD29A2B49BB820053B4A5 /* Preview Assets.xcassets */; };
 		0D3BD2A52B49BB820053B4A5 /* SwensonHeTaskTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3BD2A42B49BB820053B4A5 /* SwensonHeTaskTests.swift */; };
@@ -75,7 +74,6 @@
 		0D3BD28E2B49BB800053B4A5 /* SwensonHeTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwensonHeTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D3BD2912B49BB800053B4A5 /* SwensonHeTaskApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwensonHeTaskApp.swift; sourceTree = "<group>"; };
 		0D3BD2932B49BB800053B4A5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		0D3BD2952B49BB800053B4A5 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		0D3BD2972B49BB820053B4A5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0D3BD29A2B49BB820053B4A5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0D3BD2A02B49BB820053B4A5 /* SwensonHeTaskTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwensonHeTaskTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -160,7 +158,6 @@
 				0D3BD2BF2B49BC770053B4A5 /* Features */,
 				0D3BD2912B49BB800053B4A5 /* SwensonHeTaskApp.swift */,
 				0D3BD2932B49BB800053B4A5 /* ContentView.swift */,
-				0D3BD2952B49BB800053B4A5 /* Item.swift */,
 				0D3BD2972B49BB820053B4A5 /* Assets.xcassets */,
 				0D3BD2992B49BB820053B4A5 /* Preview Content */,
 			);
@@ -443,7 +440,6 @@
 				0D3BD2C62B49BF950053B4A5 /* AbstractCategories+ItemsViewModel.swift in Sources */,
 				0D3BD2942B49BB800053B4A5 /* ContentView.swift in Sources */,
 				0DEC8F372B4B4B050080DD7B /* SavedEventsScreen.swift in Sources */,
-				0D3BD2962B49BB800053B4A5 /* Item.swift in Sources */,
 				0DEC8F052B4A1DBA0080DD7B /* AbstractGridItemViewModels.swift in Sources */,
 				0DEC8F352B4B4ABE0080DD7B /* Event.swift in Sources */,
 				0DEC8F002B4A16E50080DD7B /* TasksScreenViewModel.swift in Sources */,

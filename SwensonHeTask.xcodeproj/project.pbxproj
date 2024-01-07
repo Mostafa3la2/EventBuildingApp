@@ -33,6 +33,15 @@
 		0DEC8F192B4AE7A30080DD7B /* TasksModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DEC8F182B4AE7A30080DD7B /* TasksModel.swift */; };
 		0DEC8F1C2B4AFF9A0080DD7B /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 0DEC8F1B2B4AFF9A0080DD7B /* Kingfisher */; };
 		0DEC8F1E2B4B1C610080DD7B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DEC8F1D2B4B1C610080DD7B /* Extensions.swift */; };
+		0DEC8F212B4B3F610080DD7B /* CategoryGridItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DEC8F012B4A1BF60080DD7B /* CategoryGridItemViewModel.swift */; };
+		0DEC8F222B4B3F630080DD7B /* TaskGridViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DEC8F062B4A1FA90080DD7B /* TaskGridViewModel.swift */; };
+		0DEC8F232B4B3F660080DD7B /* CartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DEC8F0B2B4ABA7F0080DD7B /* CartViewModel.swift */; };
+		0DEC8F242B4B400D0080DD7B /* AbstractGridItemViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DEC8F042B4A1DBA0080DD7B /* AbstractGridItemViewModels.swift */; };
+		0DEC8F252B4B400D0080DD7B /* AbstractCategories+ItemsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3BD2C52B49BF950053B4A5 /* AbstractCategories+ItemsViewModel.swift */; };
+		0DEC8F282B4B40920080DD7B /* MockupViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DEC8F272B4B40920080DD7B /* MockupViewModels.swift */; };
+		0DEC8F292B4B40BD0080DD7B /* MockupViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DEC8F272B4B40920080DD7B /* MockupViewModels.swift */; };
+		0DEC8F2A2B4B40E10080DD7B /* TasksModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DEC8F182B4AE7A30080DD7B /* TasksModel.swift */; };
+		0DEC8F2B2B4B40E10080DD7B /* CategoriesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DEC8F162B4AD3E30080DD7B /* CategoriesModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +90,7 @@
 		0DEC8F162B4AD3E30080DD7B /* CategoriesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesModel.swift; sourceTree = "<group>"; };
 		0DEC8F182B4AE7A30080DD7B /* TasksModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksModel.swift; sourceTree = "<group>"; };
 		0DEC8F1D2B4B1C610080DD7B /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		0DEC8F272B4B40920080DD7B /* MockupViewModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockupViewModels.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -218,6 +228,7 @@
 		0D3BD2C42B49BF7D0053B4A5 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				0DEC8F262B4B40600080DD7B /* Mockups */,
 				0DEC8F032B4A1D9C0080DD7B /* Abstracts */,
 				0DEC8EFD2B4A16D80080DD7B /* CategoriesScreenViewModel.swift */,
 				0DEC8EFF2B4A16E50080DD7B /* TasksScreenViewModel.swift */,
@@ -261,6 +272,14 @@
 				0DEC8F182B4AE7A30080DD7B /* TasksModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		0DEC8F262B4B40600080DD7B /* Mockups */ = {
+			isa = PBXGroup;
+			children = (
+				0DEC8F272B4B40920080DD7B /* MockupViewModels.swift */,
+			);
+			path = Mockups;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -414,6 +433,7 @@
 				0DEC8F002B4A16E50080DD7B /* TasksScreenViewModel.swift in Sources */,
 				0DEC8F192B4AE7A30080DD7B /* TasksModel.swift in Sources */,
 				0D3BD2CB2B49C6950053B4A5 /* Colors.swift in Sources */,
+				0DEC8F282B4B40920080DD7B /* MockupViewModels.swift in Sources */,
 				0DEC8F1E2B4B1C610080DD7B /* Extensions.swift in Sources */,
 				0D3BD2C22B49BE150053B4A5 /* CategoriesItemsScreen.swift in Sources */,
 				0D3BD2C82B49C2680053B4A5 /* CategoryItemGridViewElement.swift in Sources */,
@@ -426,6 +446,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0DEC8F232B4B3F660080DD7B /* CartViewModel.swift in Sources */,
+				0DEC8F292B4B40BD0080DD7B /* MockupViewModels.swift in Sources */,
+				0DEC8F2A2B4B40E10080DD7B /* TasksModel.swift in Sources */,
+				0DEC8F2B2B4B40E10080DD7B /* CategoriesModel.swift in Sources */,
+				0DEC8F222B4B3F630080DD7B /* TaskGridViewModel.swift in Sources */,
+				0DEC8F242B4B400D0080DD7B /* AbstractGridItemViewModels.swift in Sources */,
+				0DEC8F212B4B3F610080DD7B /* CategoryGridItemViewModel.swift in Sources */,
+				0DEC8F252B4B400D0080DD7B /* AbstractCategories+ItemsViewModel.swift in Sources */,
 				0D3BD2A52B49BB820053B4A5 /* SwensonHeTaskTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -15,6 +15,9 @@ class CartManager: ObservableObject {
     @Published var categoriesTasksCount: [Int: Int] = [:]
 
     func addItemToCart(cartItem: CartItem) {
+        guard (cartItem.categoryID != nil) else {
+            return
+        }
         if !cartItems.contains(cartItem) {
             self.cartItems.insert(cartItem)
             self.avgBudget+=cartItem.avgBudget ?? 0

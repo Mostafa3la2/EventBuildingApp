@@ -199,8 +199,8 @@
 		0D3BD2BE2B49BC700053B4A5 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				0D3BD2C92B49C6880053B4A5 /* Design System */,
 				0DEC8F1D2B4B1C610080DD7B /* Extensions.swift */,
+				0D3BD2C92B49C6880053B4A5 /* Design System */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";

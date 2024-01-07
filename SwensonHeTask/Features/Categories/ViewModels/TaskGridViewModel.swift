@@ -8,15 +8,11 @@
 import Foundation
 
 
-class TaskGridItemViewModel: ModularGridItemViewModel, HasBudget, CanAddOrSubtract, ObservableObject {
+class TaskGridItemViewModel: ModularGridItemViewModel, HasBudget, ObservableObject {
 
-    func operationDone(added: Bool) {
-        
-    }
-    
+    var cartManager: CartManager
+
     @Published var added: Bool = false
-
-
 
     var avgBudget: String = "600"
 
@@ -28,6 +24,9 @@ class TaskGridItemViewModel: ModularGridItemViewModel, HasBudget, CanAddOrSubtra
 
     var imageURL: String = "https://picsum.photos/200/300"
 
+    init(cartManager: CartManager) {
+        self.cartManager = cartManager
+    }
 }
 
 

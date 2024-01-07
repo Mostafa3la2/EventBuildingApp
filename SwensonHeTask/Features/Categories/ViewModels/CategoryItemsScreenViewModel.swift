@@ -10,7 +10,9 @@ import Foundation
 
 class TasksViewModel: CategoriesItemsModularViewModel {
 
-    var dataSource: [any ModularGridItemViewModel] = [TaskGridItemViewModel()]
+    var cartManager: CartManager
+
+    var dataSource: [any ModularGridItemViewModel]
 
     @Published var title: String = "Category Title"
 
@@ -18,12 +20,17 @@ class TasksViewModel: CategoriesItemsModularViewModel {
 
     @Published var avgBudget: String = "$ XXXX"
 
-
+    init(cartManager: CartManager) {
+        self.cartManager = cartManager
+        dataSource = [TaskGridItemViewModel(cartManager: cartManager)]
+    }
 }
 
 class TasksDummyViewModel: CategoriesItemsModularViewModel {
 
-    var dataSource: [any ModularGridItemViewModel] = Array(repeating: TaskGridItemViewModel(), count: 4)
+    var cartManager: CartManager
+
+    var dataSource: [any ModularGridItemViewModel]
 
     @Published var title: String = "Dummy Category Title"
 
@@ -31,5 +38,9 @@ class TasksDummyViewModel: CategoriesItemsModularViewModel {
 
     @Published var avgBudget: String = "$ XXXX"
 
+    init(cartManager: CartManager) {
+        self.cartManager = cartManager
+        dataSource = Array(repeating: TaskGridItemViewModel(cartManager: cartManager), count: 4)
+    }
 
 }

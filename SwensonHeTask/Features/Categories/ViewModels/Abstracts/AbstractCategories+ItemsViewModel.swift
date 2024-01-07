@@ -20,4 +20,8 @@ protocol CategoriesItemsModularViewModel: ObservableObject {
     var dataSource: [any ModularGridItemViewModel] {
         get set
     }
+
+    var cartManager: CartManager {
+        get set
+    }
 }

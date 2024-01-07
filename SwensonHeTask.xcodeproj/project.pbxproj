@@ -25,6 +25,7 @@
 		0DEC8F022B4A1BF60080DD7B /* CategoryGridItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DEC8F012B4A1BF60080DD7B /* CategoryGridItemViewModel.swift */; };
 		0DEC8F052B4A1DBA0080DD7B /* AbstractGridItemViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DEC8F042B4A1DBA0080DD7B /* AbstractGridItemViewModels.swift */; };
 		0DEC8F072B4A1FA90080DD7B /* TaskGridViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DEC8F062B4A1FA90080DD7B /* TaskGridViewModel.swift */; };
+		0DEC8F0C2B4ABA7F0080DD7B /* CartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DEC8F0B2B4ABA7F0080DD7B /* CartViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,7 @@
 		0DEC8F012B4A1BF60080DD7B /* CategoryGridItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryGridItemViewModel.swift; sourceTree = "<group>"; };
 		0DEC8F042B4A1DBA0080DD7B /* AbstractGridItemViewModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractGridItemViewModels.swift; sourceTree = "<group>"; };
 		0DEC8F062B4A1FA90080DD7B /* TaskGridViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskGridViewModel.swift; sourceTree = "<group>"; };
+		0DEC8F0B2B4ABA7F0080DD7B /* CartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -203,6 +205,7 @@
 				0DEC8EFF2B4A16E50080DD7B /* CategoryItemsScreenViewModel.swift */,
 				0DEC8F012B4A1BF60080DD7B /* CategoryGridItemViewModel.swift */,
 				0DEC8F062B4A1FA90080DD7B /* TaskGridViewModel.swift */,
+				0DEC8F0B2B4ABA7F0080DD7B /* CartViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -356,6 +359,7 @@
 			files = (
 				0DEC8F022B4A1BF60080DD7B /* CategoryGridItemViewModel.swift in Sources */,
 				0DEC8EFC2B49F48B0080DD7B /* EventBuilderNavigation.swift in Sources */,
+				0DEC8F0C2B4ABA7F0080DD7B /* CartViewModel.swift in Sources */,
 				0DEC8EFE2B4A16D80080DD7B /* CategoriesScreenViewModel.swift in Sources */,
 				0D3BD2C62B49BF950053B4A5 /* AbstractCategories+ItemsViewModel.swift in Sources */,
 				0D3BD2942B49BB800053B4A5 /* ContentView.swift in Sources */,

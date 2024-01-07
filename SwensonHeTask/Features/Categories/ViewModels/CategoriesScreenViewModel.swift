@@ -6,11 +6,13 @@
 //
 
 import Foundation
+import Combine
 
 class CategoriesScreenViewModel: CategoriesItemsModularViewModel {
 
+    var cartManager: CartManager
 
-    var dataSource: [any ModularGridItemViewModel] = [CategoryGridItemViewModel()]
+    var dataSource: [any ModularGridItemViewModel]
 
     @Published var title: String = "Event Builder"
 
@@ -18,12 +20,17 @@ class CategoriesScreenViewModel: CategoriesItemsModularViewModel {
 
     @Published var avgBudget: String = "$ XXXX"
 
-
+    init(cartManager: CartManager) {
+        self.cartManager = cartManager
+        dataSource = [CategoryGridItemViewModel(cartManager: cartManager)]
+    }
 }
 
 class CategoriesScreenDummyViewModel: CategoriesItemsModularViewModel {
 
-    var dataSource: [any ModularGridItemViewModel] = Array(repeating: CategoryGridItemViewModel(), count: 4)
+    var cartManager: CartManager
+
+    var dataSource: [any ModularGridItemViewModel]
 
     @Published var title: String = "Dummy Event Builder"
 
@@ -31,5 +38,8 @@ class CategoriesScreenDummyViewModel: CategoriesItemsModularViewModel {
 
     @Published var avgBudget: String = "$ XXXX"
 
-
+    init(cartManager: CartManager) {
+        self.cartManager = cartManager
+        dataSource = Array(repeating: CategoryGridItemViewModel(cartManager: cartManager), count: 4)
+    }
 }

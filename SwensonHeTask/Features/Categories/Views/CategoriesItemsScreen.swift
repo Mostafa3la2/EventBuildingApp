@@ -11,15 +11,13 @@ enum PageState {
     case categories
     case tasks
 }
-// this one may be confusing but using generics here allows us to use the screen differently by passing different VMs that conform to same protocol which provides similar data 
+// Using generics here allows us to reuse the screen differently by passing different VMs that conform to same protocol which provides similar data
 struct CategoriesItemsScreen<T>: View where T: CategoriesItemsModularViewModel {
-
     @ObservedObject var vm: T
-    let data = (0...3).map { $0 } // Sample data
     var state: PageState = .categories
 
     private func constructCategoriesGridCell(index: Int) -> some View {
-        return NavigationLink(destination: CategoriesItemsScreen<TasksViewModel>(vm: TasksViewModel(), state: .tasks)){
+        return NavigationLink(destination: CategoriesItemsScreen<TasksViewModel>(vm: TasksViewModel(cartManager: vm.cartManager), state: .tasks)){
             CategoryItemGridViewElement<CategoryGridItemViewModel>(vm: vm.dataSource[index] as! CategoryGridItemViewModel)
         }
     }
@@ -52,8 +50,7 @@ struct CategoriesItemsScreen<T>: View where T: CategoriesItemsModularViewModel {
                     .multilineTextAlignment(.center)
                     .foregroundColor(.black)
                 LazyVGrid(columns: [GridItem(), GridItem()]) {
-                    ForEach(data, id: \.self) { item in
-                        // Your grid cell content here
+                    ForEach((0..<vm.dataSource.count).map { $0 }, id: \.self) { item in
                         if state == .categories {
                             constructCategoriesGridCell(index: item)
                         } else {
@@ -92,9 +89,9 @@ struct CategoriesItemsScreen<T>: View where T: CategoriesItemsModularViewModel {
                 Text("Toggle view state")
             })
             if state == .categories {
-                CategoriesItemsScreen<CategoriesScreenDummyViewModel>(vm: CategoriesScreenDummyViewModel())
+                CategoriesItemsScreen<CategoriesScreenDummyViewModel>(vm: CategoriesScreenDummyViewModel(cartManager: CartManager()))
             } else {
-                CategoriesItemsScreen<TasksDummyViewModel>(vm: TasksDummyViewModel(), state: .tasks)
+                CategoriesItemsScreen<TasksDummyViewModel>(vm: TasksDummyViewModel(cartManager: CartManager()), state: .tasks)
             }
         }
 

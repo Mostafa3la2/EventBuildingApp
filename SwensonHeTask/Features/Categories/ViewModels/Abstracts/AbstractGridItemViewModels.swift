@@ -10,6 +10,9 @@ import Foundation
 protocol ModularGridItemViewModel: ObservableObject {
     var title: String { get }
     var imageURL: String { get }
+    var cartManager: CartManager {
+        get set
+    }
 }
 
 protocol HasBudget {
@@ -18,6 +21,3 @@ protocol HasBudget {
     var maxBudget: String { get }
 }
 
-protocol CanAddOrSubtract {
-    func operationDone(added: Bool)
-}

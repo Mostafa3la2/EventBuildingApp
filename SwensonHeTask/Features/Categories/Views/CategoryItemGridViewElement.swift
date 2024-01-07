@@ -29,7 +29,7 @@ struct CategoryItemGridViewElement<T>: View where T: ModularGridItemViewModel {
     private let cellHeight: CGFloat = 149
 
     private func createBudgetLabel(vm: HasBudget?) -> some View {
-        return Text("$ " + ("\(vm?.avgBudget ?? 0)" ))
+        return Text("$ " + ("\(vm?.minBudget ?? 0) - \(vm?.maxBudget ?? 0)" ))
             .font(Font.custom("Avenir-Black", size: 14))
     }
     private func toggleAddButton(state:  Binding<Bool>) {

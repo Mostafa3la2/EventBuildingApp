@@ -21,10 +21,10 @@ class TasksViewModel: CategoriesItemsModularViewModel {
     @Published var avgBudget: Double = 0
 
     var categoryID: Int?
-
-    init(cartManager: CartManager, categoryID: Int?) {
+    init(cartManager: CartManager, categoryID: Int?, categoryName: String?) {
         self.cartManager = cartManager
         self.categoryID = categoryID
+        self.title = categoryName ?? ""
         if let categoryID {
             cartManager.$categoriesAvgBudget
                 .sink(receiveValue: { dict in

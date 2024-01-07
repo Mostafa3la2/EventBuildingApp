@@ -17,7 +17,7 @@ struct CategoriesItemsScreen<T>: View where T: CategoriesItemsModularViewModel {
     var state: PageState = .categories
 
     private func constructCategoriesGridCell(item: any ModularGridItemViewModel) -> some View {
-        return NavigationLink(destination: CategoriesItemsScreen<TasksViewModel>(vm: TasksViewModel(cartManager: vm.cartManager, categoryID: item.id), state: .tasks)){
+        return NavigationLink(destination: CategoriesItemsScreen<TasksViewModel>(vm: TasksViewModel(cartManager: vm.cartManager, categoryID: item.id, categoryName: item.title), state: .tasks)){
             CategoryItemGridViewElement<CategoryGridItemViewModel>(vm: item as! CategoryGridItemViewModel)
         }
     }

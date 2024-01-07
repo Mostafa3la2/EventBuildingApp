@@ -16,7 +16,7 @@ class TasksViewModel: CategoriesItemsModularViewModel {
 
     @Published var title: String = "Category Title"
 
-    @Published var subtitle: String = "Subtitle"
+    @Published var subtitle: String = "Add to your event to view our cost estimate."
 
     @Published var avgBudget: Double = 0
 

@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol ModularGridItemViewModel: ObservableObject {
+protocol ModularGridItemViewModel: ObservableObject, Identifiable, Hashable {
     var title: String? { get }
     var imageURL: String? { get }
     var id: Int? { get set }

@@ -16,13 +16,41 @@ struct CategoriesItemsScreen<T>: View where T: CategoriesItemsModularViewModel {
     @ObservedObject var vm: T
     var state: PageState = .categories
 
-    private func constructCategoriesGridCell(index: Int) -> some View {
-        return NavigationLink(destination: CategoriesItemsScreen<TasksViewModel>(vm: TasksViewModel(cartManager: vm.cartManager, categoryID: vm.dataSource[index].id), state: .tasks)){
-            CategoryItemGridViewElement<CategoryGridItemViewModel>(vm: vm.dataSource[index] as! CategoryGridItemViewModel)
+    private func constructCategoriesGridCell(item: any ModularGridItemViewModel) -> some View {
+        return NavigationLink(destination: CategoriesItemsScreen<TasksViewModel>(vm: TasksViewModel(cartManager: vm.cartManager, categoryID: item.id), state: .tasks)){
+            CategoryItemGridViewElement<CategoryGridItemViewModel>(vm: item as! CategoryGridItemViewModel)
         }
     }
-    private func constructTasksGridCell(index: Int) -> some View {
-        return CategoryItemGridViewElement<TaskGridItemViewModel>(vm: vm.dataSource[index] as! TaskGridItemViewModel, state: .tasks)
+    private func constructTasksGridCell(item: any ModularGridItemViewModel) -> some View {
+        return CategoryItemGridViewElement<TaskGridItemViewModel>(vm: item as! TaskGridItemViewModel, state: .tasks)
+    }
+
+    private func constructCategoriesGrid() -> some View {
+        var dataSource = vm.dataSource as! [CategoryGridItemViewModel]
+        var splittedDataSource = dataSource.chunked(into: 2)
+        return VStack {
+            ForEach(splittedDataSource, id: \.self) { column in
+                HStack {
+                    ForEach(column, id: \.id) { item in
+                            constructCategoriesGridCell(item: item)
+
+                    }
+                }
+            }
+        }
+    }
+    private func constructTasksGrid() -> some View{
+        var dataSource = vm.dataSource as! [TaskGridItemViewModel]
+        var splittedDataSource = dataSource.chunked(into: 2)
+        return VStack {
+            ForEach(splittedDataSource, id: \.self) { column in
+                HStack {
+                    ForEach(column, id: \.id) { item in
+                        constructTasksGridCell(item: item)
+                    }
+                }
+            }
+        }
     }
     var body: some View {
         ScrollView {
@@ -49,23 +77,19 @@ struct CategoriesItemsScreen<T>: View where T: CategoriesItemsModularViewModel {
                     )
                     .multilineTextAlignment(.center)
                     .foregroundColor(.black)
-                LazyVGrid(columns: [GridItem(), GridItem()]) {
-                    ForEach((0..<vm.dataSource.count).map { $0 }, id: \.self) { item in
-                        if state == .categories {
-                            constructCategoriesGridCell(index: item)
-                        } else {
-                            constructTasksGridCell(index: item)
-                        }
-                    }
+                if state == .categories {
+                    constructCategoriesGrid()
+                } else {
+                    constructTasksGrid()
                 }
                 state == .categories ? Button(action: {}, label: {
                     Text("Save")
-                      .font(
-                        Font.custom("Avenir", size: 16)
-                          .weight(.black)
-                      )
-                      .multilineTextAlignment(.center)
-                      .foregroundColor(.white)
+                        .font(
+                            Font.custom("Avenir", size: 16)
+                                .weight(.black)
+                        )
+                        .multilineTextAlignment(.center)
+                        .foregroundColor(.white)
                 })
                 .frame(width: 343, height: 52)
                 .background(ColorsConstants.mainColor)
@@ -105,3 +129,4 @@ struct CategoriesItemsScreen<T>: View where T: CategoriesItemsModularViewModel {
     }
     return ContainerView()
 }
+

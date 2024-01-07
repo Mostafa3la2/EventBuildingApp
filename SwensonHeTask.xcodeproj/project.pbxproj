@@ -32,6 +32,7 @@
 		0DEC8F172B4AD3E30080DD7B /* CategoriesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DEC8F162B4AD3E30080DD7B /* CategoriesModel.swift */; };
 		0DEC8F192B4AE7A30080DD7B /* TasksModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DEC8F182B4AE7A30080DD7B /* TasksModel.swift */; };
 		0DEC8F1C2B4AFF9A0080DD7B /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 0DEC8F1B2B4AFF9A0080DD7B /* Kingfisher */; };
+		0DEC8F1E2B4B1C610080DD7B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DEC8F1D2B4B1C610080DD7B /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,7 @@
 		0DEC8F132B4AD3790080DD7B /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		0DEC8F162B4AD3E30080DD7B /* CategoriesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesModel.swift; sourceTree = "<group>"; };
 		0DEC8F182B4AE7A30080DD7B /* TasksModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksModel.swift; sourceTree = "<group>"; };
+		0DEC8F1D2B4B1C610080DD7B /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,6 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				0D3BD2C92B49C6880053B4A5 /* Design System */,
+				0DEC8F1D2B4B1C610080DD7B /* Extensions.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -411,6 +414,7 @@
 				0DEC8F002B4A16E50080DD7B /* TasksScreenViewModel.swift in Sources */,
 				0DEC8F192B4AE7A30080DD7B /* TasksModel.swift in Sources */,
 				0D3BD2CB2B49C6950053B4A5 /* Colors.swift in Sources */,
+				0DEC8F1E2B4B1C610080DD7B /* Extensions.swift in Sources */,
 				0D3BD2C22B49BE150053B4A5 /* CategoriesItemsScreen.swift in Sources */,
 				0D3BD2C82B49C2680053B4A5 /* CategoryItemGridViewElement.swift in Sources */,
 				0DEC8F072B4A1FA90080DD7B /* TaskGridViewModel.swift in Sources */,

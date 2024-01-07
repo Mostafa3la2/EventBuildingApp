@@ -9,6 +9,7 @@ import Foundation
 import Combine
 
 class CategoryGridItemViewModel: ModularGridItemViewModel, ObservableObject {
+
     var id: Int?
     
     var cartManager: CartManager
@@ -22,5 +23,15 @@ class CategoryGridItemViewModel: ModularGridItemViewModel, ObservableObject {
         self.title = category.title
         self.imageURL = category.image
         self.id = category.id
+    }
+}
+extension CategoryGridItemViewModel: Identifiable, Hashable {
+
+    public func hash(into hasher: inout Hasher) {
+        return hasher.combine(id)
+    }
+
+    public static func == (lhs: CategoryGridItemViewModel, rhs: CategoryGridItemViewModel) -> Bool {
+        return lhs.id == rhs.id
     }
 }

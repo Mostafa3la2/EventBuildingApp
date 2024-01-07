@@ -7,15 +7,17 @@
 
 import Foundation
 
-
 class TaskGridItemViewModel: ModularGridItemViewModel, HasBudget, ObservableObject, CartHandler {
 
+
     func addToCart() {
-        self.cartManager.addItemToCart(cartItem: CartItem(name: self.title, avgBudget: self.avgBudget))
+        var cartItem = CartItem(name: self.title, avgBudget: self.avgBudget, id: self.id)
+        self.cartManager.addItemToCart(cartItem: cartItem)
     }
 
     func removeFromCart() {
-        self.cartManager.removeItemFrom(cartItem: CartItem(name: self.title, avgBudget: self.avgBudget))
+        var cartItem = CartItem(name: self.title, avgBudget: self.avgBudget, id: self.id)
+        self.cartManager.removeItemFrom(cartItem: cartItem)
     }
 
     var id: Int?
@@ -45,4 +47,13 @@ class TaskGridItemViewModel: ModularGridItemViewModel, HasBudget, ObservableObje
     }
 }
 
+extension TaskGridItemViewModel: Identifiable, Hashable {
 
+    public func hash(into hasher: inout Hasher) {
+        return hasher.combine(id)
+    }
+
+    public static func == (lhs: TaskGridItemViewModel, rhs: TaskGridItemViewModel) -> Bool {
+        return lhs.id == rhs.id
+    }
+}

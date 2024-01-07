@@ -27,7 +27,7 @@ class CartManager: ObservableObject {
 }
 
 struct CartItem: Hashable {
-
     var name: String?
     var avgBudget: Double?
+    var id: Int?
 }
